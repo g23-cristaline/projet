@@ -9,7 +9,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import jfox.javafx.view.IManagerGui;
 import projet.commun.Roles;
-import projet.data.Compte;
+import projet.data.Utilisateur;
 import projet.report.EnumReport;
 import projet.report.ManagerReport;
 import projet.view.systeme.ModelConnexion;
@@ -27,7 +27,7 @@ public class MenuBarAppli extends MenuBar {
 	private MenuItem itemDeconnecter;
 
 	private MenuItem itemCategories;
-	private MenuItem itemComptes;
+	private MenuItem itemUtilisateurs;
 	
 	@Inject
 	private IManagerGui 	managerGui;
@@ -86,10 +86,10 @@ public class MenuBarAppli extends MenuBar {
 		menu.getItems().add( item );
 		itemCategories = item;
 		
-		item = new MenuItem( "Comptes" );
+		item = new MenuItem( "Utilisateurs" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.CompteListe )  );
 		menu.getItems().add( item );
-		itemComptes = item;
+		itemUtilisateurs = item;
 
 		
 		// Manu Etats
@@ -145,11 +145,11 @@ public class MenuBarAppli extends MenuBar {
 
 
 		// Configuration initiale du menu
-		configurerMenu( modelConnexion.getCompteActif() );
+		configurerMenu( modelConnexion.getUtilisateurActif() );
 
-		// Le changement du compte connecté modifie automatiquement le menu
-		modelConnexion.compteActifProperty().addListener( (obs) -> {
-					Platform.runLater( () -> configurerMenu( modelConnexion.getCompteActif() ) );
+		// Le changement du utilisateur connecté modifie automatiquement le menu
+		modelConnexion.utilisateurActifProperty().addListener( (obs) -> {
+					Platform.runLater( () -> configurerMenu( modelConnexion.getUtilisateurActif() ) );
 				}
 			); 
 		
@@ -158,27 +158,28 @@ public class MenuBarAppli extends MenuBar {
 	
 	// Méthodes auxiliaires
 	
-	private void configurerMenu( Compte compteActif  ) {
+	private void configurerMenu( Utilisateur utilisateurActif  ) {
 
 		itemDeconnecter.setDisable(true);
 		
 		menuDonnees.setVisible(false);
 		itemCategories.setVisible(false);
-		itemComptes.setVisible(false);
+		itemUtilisateurs.setVisible(false);
 		menuEtats.setVisible(false);
 		menuTests.setVisible(false);
 		menuEtats.setVisible(false);
 		
-		if( compteActif != null ) {
+		if( utilisateurActif != null ) {
 			itemDeconnecter.setDisable(false);
-			if( compteActif.isInRole( Roles.UTILISATEUR) ) {
+			if( utilisateurActif.isInRole( Roles.MEMBRE) ||
+					utilisateurActif.isInRole(Roles.EXTERNE)) {
 				menuDonnees.setVisible(true);
 				menuEtats.setVisible(true);
 			}
-			if( compteActif.isInRole( Roles.ADMINISTRATEUR ) ) {
+			if( utilisateurActif.isInRole( Roles.ADMINISTRATEUR ) ) {
 				menuDonnees.setVisible(true);
 				itemCategories.setVisible(true);
-				itemComptes.setVisible(true);
+				itemUtilisateurs.setVisible(true);
 				menuTests.setVisible(true);
 			}
 		}

@@ -9,8 +9,8 @@ import javafx.application.Platform;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import jfox.commun.exception.ExceptionValidation;
-import projet.dao.DaoCompte2;
-import projet.data.Compte;
+import projet.dao.DaoUtilisateur;
+import projet.data.Utilisateur;
 
 
 public class ModelConnexion {
@@ -22,29 +22,27 @@ public class ModelConnexion {
 	// Données observables 
 	
 	// Vue connexion
-	private final Compte			courant = new Compte();
+	private final Utilisateur			courant = new Utilisateur();
 
-	// Compte connecté
-	private final Property<Compte>	compteActif = new SimpleObjectProperty<>();
-
-	
+	// Utilisateur connecté
+	private final Property<Utilisateur>	utilisateurActif = new SimpleObjectProperty<>();
 	// Autres champs
 	@Inject
-	private DaoCompte2	daoCompte;
+	private DaoUtilisateur	daoUtilisateur;
 	
 
 	// Getters 
 	
-	public Compte getCourant() {
+	public Utilisateur getCourant() {
 		return courant;
 	}
 	
-	public Property<Compte> compteActifProperty() {
-		return compteActif;
+	public Property<Utilisateur> utilisateurActifProperty() {
+		return utilisateurActif;
 	}
 	
-	public Compte getCompteActif() {
-		return compteActif.getValue();
+	public Utilisateur getUtilisateurActif() {
+		return utilisateurActif.getValue();
 	}
 	
 	
@@ -53,7 +51,7 @@ public class ModelConnexion {
 	@PostConstruct
 	public void init() {
 		courant.setPseudo( "geek" );
-		courant.setMotDePasse( "geek" );
+		courant.setPass( "geek" );
 	}
 	
 	
@@ -62,19 +60,19 @@ public class ModelConnexion {
 
 	public void ouvrirSessionUtilisateur() {
 
-		Compte compte = daoCompte.validerAuthentification(
-					courant.pseudoProperty().getValue(), courant.motDePasseProperty().getValue() );
+		Utilisateur utilisateur = daoUtilisateur.validerAuthentification(
+					courant.pseudoProperty().getValue(), courant.passProperty().getValue() );
 		
-		if( compte == null ) {
+		if( utilisateur == null ) {
 			throw new ExceptionValidation( "Pseudo ou mot de passe invalide." );
 		} else {
-			Platform.runLater( () -> compteActif.setValue( compte ) );
+			Platform.runLater( () -> utilisateurActif.setValue( utilisateur ) );
 		}
 	}
 	
 
 	public void fermerSessionUtilisateur() {
-		compteActif.setValue( null );
+		utilisateurActif.setValue( null );
 	}
 
 }

@@ -9,12 +9,13 @@ import projet.data.Compte;
 import projet.data.Memo;
 import projet.data.Personne;
 import projet.data.Service;
+import projet.data.Utilisateur;
 
 
 @Mapper
 public interface IMapper {  
 	
-	Compte update( @MappingTarget Compte target, Compte source  );
+	Utilisateur update( @MappingTarget Utilisateur courant, Utilisateur compte  );
 	
 	Categorie update( @MappingTarget Categorie target, Categorie source );
 

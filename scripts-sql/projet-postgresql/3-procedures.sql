@@ -1,4 +1,4 @@
-SET search_path TO projet;
+SET search_path TO cristaline;
 
 
 -- Supprime toutes les fonctions du schéma
