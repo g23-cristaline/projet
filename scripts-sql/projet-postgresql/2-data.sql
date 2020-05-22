@@ -64,8 +64,10 @@ INSERT INTO role (id, role) VALUES
 --participant_attente
 
 --equipe
+INSERT INTO equipe (id,nom,categorie,nombre_repas,valide,paye) VALUES (1,'Branden','sem elit, pharetra ut, pharetra sed,',6,true,false),(2,'Iliana','neque. Nullam ut nisi a',6,false,true),(3,'Raphael','lobortis tellus',7,false,false),(4,'Eagan','nec ante blandit viverra. Donec tempus, lorem',1,true,true),(5,'Keith','eu elit. Nulla facilisi. Sed neque.',9,false,false),(6,'Alexandra','vitae diam. Proin dolor.',3,false,false),(7,'Chelsea','velit.',5,false,false),(8,'Jin','Donec',10,false,true);
 
 --participant
+INSERT INTO participant (id,nom_complet,adresse,mail,telephone,id_equipe,date_naissance) VALUES (1,'Ocean','P.O. Box 781, 8453 A, Ave','lobortis.augue.scelerisque@tempor.net','08 84 25 27 48',5,'05-12-2020'),(2,'Rylee','Ap #906-6080 Ipsum Avenue','laoreet.lectus@placeratCrasdictum.co.uk','04 72 45 76 42',6,'07-09-2020'),(3,'Rebekah','452-6453 Sagittis. St.','dolor@nec.org','09 77 93 81 03',7,'11-01-2020'),(4,'Wynter','P.O. Box 146, 5002 Sed Rd.','Donec.porttitor.tellus@vel.org','03 72 28 15 08',5,'15-12-2020'),(5,'Lara','P.O. Box 458, 3089 Mauris Street','sem.mollis@atrisus.com','01 46 84 66 60',7,'18-05-2021'),(6,'Maris','579-7182 Velit. Street','semper.tellus@atpretiumaliquet.com','06 28 41 79 55',7,'02-11-2020'),(7,'Kessie','Ap #585-8420 Odio St.','odio.Nam@lobortisClass.org','02 14 53 71 48',2,'09-07-2020'),(8,'Yeo','P.O. Box 694, 6377 Vestibulum, Street','orci.Ut.sagittis@sodalespurus.co.uk','01 27 25 31 75',7,'03-12-2020'),(9,'Raven','1795 Molestie St.','Cras@egestas.org','04 82 98 02 64',5,'09-08-2019'),(10,'Raja','Ap #608-7539 Iaculis Rd.','in.faucibus.orci@velsapien.com','07 70 27 23 78',8,'29-09-2019');
 
 --execute
 

@@ -73,6 +73,7 @@ CREATE TABLE  Participant_attente(
 	mail                  VARCHAR (50) NOT NULL ,
 	telephone             VARCHAR (25) NOT NULL ,
 	id_Equipe_attente     INT  NOT NULL  ,
+	date_naissance      DATE NOT NULL,
 	CONSTRAINT Participant_attente_PK PRIMARY KEY (id)
 
 	,CONSTRAINT Participant_attente_Equipe_attente_FK FOREIGN KEY (id_Equipe_attente) REFERENCES  Equipe_attente(id)
@@ -103,6 +104,7 @@ CREATE TABLE  Participant(
 	mail                  VARCHAR (50) NOT NULL ,
 	telephone             VARCHAR (25) NOT NULL ,
 	id_Equipe             INT  NOT NULL  ,
+	date_naissance      DATE NOT NULL,
 	CONSTRAINT Participant_PK PRIMARY KEY (id)
 
 	,CONSTRAINT Participant_Equipe_FK FOREIGN KEY (id_Equipe) REFERENCES  Equipe(id)
