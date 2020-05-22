@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
-import projet.data.Compte;
+import projet.data.Utilisateur;
 
 
 public class DaoRole {
@@ -25,7 +25,7 @@ public class DaoRole {
 	
 	// Actions
 
-	public void insererPourCompte( Compte compte )  {
+	public void insererPourUtilisateur( Utilisateur utilisateur )  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -33,10 +33,10 @@ public class DaoRole {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO role (idcompte, role) VALUES (?,?)";
+			sql = "INSERT INTO role (id, role) VALUES (?,?)";
 			stmt = cn.prepareStatement( sql );
-			for( String role : compte.getRoles() ) {
-				stmt.setObject( 1, compte.getId() );
+			for( String role : utilisateur.getRoles() ) {
+				stmt.setObject( 1, utilisateur.getId() );
 				stmt.setObject( 2, role );
 				stmt.executeUpdate();
 			}
@@ -48,7 +48,7 @@ public class DaoRole {
 	}
 
 	
-	public void supprimerPourCompte( int idCompte ) {
+	public void supprimerPourUtilisateur( int idUtilisateur ) {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -58,9 +58,9 @@ public class DaoRole {
 			cn = dataSource.getConnection();
 
 			// Supprime les roles
-			sql = "DELETE FROM role  WHERE idcompte = ? ";
+			sql = "DELETE FROM role  WHERE id = ? ";
 			stmt = cn.prepareStatement(sql);
-			stmt.setObject( 1, idCompte );
+			stmt.setObject( 1, idUtilisateur );
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -71,7 +71,7 @@ public class DaoRole {
 	}
 
 
-	public List<String> listerPourCompte( Compte compte ) {
+	public List<String> listerPourUtilisateur( Utilisateur utilisateur ) {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -81,9 +81,9 @@ public class DaoRole {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM role WHERE idcompte = ? ORDER BY role";
+			sql = "SELECT * FROM role WHERE id = ? ORDER BY role";
 			stmt = cn.prepareStatement(sql);
-			stmt.setObject( 1, compte.getId() );
+			stmt.setObject( 1, utilisateur.getId() );
 			rs = stmt.executeQuery();
 
 			List<String> roles = new ArrayList<>();

@@ -50,12 +50,12 @@ public class ModelCompte {
 	// Actions
 	
 	public void preparerAjouter() {
-		mapper.update( courant, new Compte() );
+//		mapper.update( courant, new Compte() );
 	}
 
 	
 	public void preparerModifier( Compte item ) {
-		mapper.update( courant, daoCompte.retrouver( item.getId() ) );
+//		mapper.update( courant, daoCompte.retrouver( item.getId() ) );
 	}
 	
 	
@@ -108,7 +108,7 @@ public class ModelCompte {
 	
 	public void supprimer( Compte item ) {
 		daoCompte.supprimer( item.getId() );
-		mapper.update( courant, UtilFX.findNext( liste, item ) );
+//		mapper.update( courant, UtilFX.findNext( liste, item ) );
 	}
 
 }
