@@ -1,5 +1,6 @@
 package projet.data;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javafx.beans.property.Property;
@@ -14,6 +15,7 @@ public class Participant {
 	private final StringProperty adresse = new SimpleStringProperty();
 	private final Property <Equipe> equipe = new SimpleObjectProperty<>();
 	private final StringProperty telephone = new SimpleStringProperty();
+	private final Property<LocalDate>date_naissance = new SimpleObjectProperty<>();
 	public final Property<Integer> idProperty() {
 		return this.id;
 	}
@@ -105,6 +107,20 @@ public class Participant {
 
 	public final void setTelephone(final String telephone) {
 		this.telephoneProperty().set(telephone);
+	}
+
+	public final Property<LocalDate> date_naissanceProperty() {
+		return this.date_naissance;
+	}
+	
+
+	public final LocalDate getDate_naissance() {
+		return this.date_naissanceProperty().getValue();
+	}
+	
+
+	public final void setDate_naissance(final LocalDate date_naissance) {
+		this.date_naissanceProperty().setValue(date_naissance);
 	}
 	
 	
