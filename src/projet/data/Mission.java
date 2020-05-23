@@ -16,6 +16,7 @@ public class Mission {
 	private final StringProperty localisation = new SimpleStringProperty();
 	private final StringProperty type = new SimpleStringProperty();
 	
+	
 	public final Property<Integer> idProperty() {
 		return this.id;
 	}

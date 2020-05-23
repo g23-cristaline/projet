@@ -7,7 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
+import projet.data.Mission;
 import projet.view.EnumView;
 
 
@@ -44,6 +46,20 @@ public class ControllerMissionListe {
 		modelMission.actualiserListe();
 		listvieww.setItems(modelMission.getListe());
 		
+
+		// Configuraiton des boutons
+		listvieww.getSelectionModel().selectedItemProperty().addListener(
+				(obs, oldVal, newVal) -> {
+					configurerBoutons();
+		});
+		configurerBoutons();
+	
+	}
+	
+	private void refresh() {
+		modelMission.actualiserListe();
+		UtilFX.selectInListView( listvieww, modelMission.getCourant() );
+		listvieww.requestFocus();
 	}
 	
 	// Actions
@@ -56,44 +72,47 @@ public class ControllerMissionListe {
 
 		@FXML
 		private void doModifier() {
-			modelMission.preparerModifier(null );
-			managerGui.showView( EnumView.CompteForm );
+			modelMission.preparerModifier((Mission) listvieww.getSelectionModel().getSelectedItem());
+			managerGui.showView( EnumView.MissionForm );
 		}
 
 		@FXML
 		private void doSupprimer() {
 			if ( managerGui.showDialogConfirm( "Confirmez-vous la suppresion ?" ) ) {
-				modelMission.supprimer(null);
-				
+				modelMission.supprimer( (Mission) listvieww.getSelectionModel().getSelectedItem() );
+				refresh();
 			}
 		}
 		
 
-		// Gestion des évènements
+		
 
+		// Gestion des évènements
 		// Clic sur la liste
 		@FXML
 		private void gererClicSurListe( MouseEvent event ) {
 			if (event.getButton().equals(MouseButton.PRIMARY)) {
 				if (event.getClickCount() == 2) {
-					 managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
+					if ( listvieww.getSelectionModel().getSelectedIndex() == -1 ) {
+						managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 					} else {
 						doModifier();
 					}
 				}
 			}
+		}
 		
-//		// Méthodes auxiliaires
-//		
-//		private void configurerBoutons() {
-//	    	if( listView.getSelectionModel().getSelectedItems().isEmpty() ) {
-//				buttonModifier.setDisable(true);
-//				buttonSupprimer.setDisable(true);
-//			} else {
-//				buttonModifier.setDisable(false);
-//				buttonSupprimer.setDisable(false);
-//			}
-//		}
+		// Méthodes auxiliaires
+		
+		private void configurerBoutons() {
+	    	if( listvieww.getSelectionModel().getSelectedItems().isEmpty() ) {
+				buttonModifier.setDisable(true);
+				buttonSupprimer.setDisable(true);
+			} else {
+				buttonModifier.setDisable(false);
+				buttonSupprimer.setDisable(false);
+			}
+		}
 
 
 

@@ -35,13 +35,13 @@ public class DaoMission {
 				cn = dataSource.getConnection();
 
 				// Insère la mission
-				sql = "INSERT INTO mission ( id, nom_mission, horaire,localisation,typem) VALUES ( ?,?,?,?,?)";
+				sql = "INSERT INTO mission ( nom_mission, horaire,localisation,typem) VALUES (?,?,?,?)";
 				stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
-				stmt.setInt(1, mission.getId() );
-				stmt.setString(	2, mission.getNom_mission());
-				stmt.setObject(	3, mission.getHoraire());
-				stmt.setString(4, mission.getLocalisation());
-				stmt.setString(5, mission.getType());
+				//stmt.setInt(1, mission.getId() );
+				stmt.setString(	1, mission.getNom_mission());
+				stmt.setObject(	2, mission.getHoraire());
+				stmt.setString(3, mission.getLocalisation());
+				stmt.setString(4, mission.getType());
 				stmt.executeUpdate();
 
 				// Récupère l'identifiant généré par le SGBD
@@ -69,12 +69,8 @@ public class DaoMission {
 				cn = dataSource.getConnection();
 
 				// Modifie la mission
-				sql = "UPDATE mission SET id = ?,"
-						+ " nom_mission = ?,"
-						+ " horaire= ?,"
-						+ "localisation=?,"
-						+ "typem=?,"
-						+ " WHERE id =  ?";
+	
+				sql = "UPDATE mission SET nom_mission = ?, horaire = ?,localisation = ?,typem = ? WHERE id =  ?";
 				stmt = cn.prepareStatement( sql );
 				stmt.setString(1, mission.getNom_mission());
 				stmt.setObject(2, mission.getHoraire());

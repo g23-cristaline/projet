@@ -5,9 +5,11 @@ import javax.inject.Inject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import jfox.commun.exception.ExceptionValidation;
+import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoMission;
 import projet.data.Compte;
+import projet.data.Memo;
 import projet.data.Mission;
 
 public class ModelMission {
@@ -17,6 +19,8 @@ public class ModelMission {
 	// Données observables 
 	
 	private final ObservableList<Mission> liste = FXCollections.observableArrayList(); 
+	private final ObservableList<String> type = FXCollections.observableArrayList("m1","m2"); 
+	
 	
 	private final Mission	courant = new Mission();
 	
@@ -38,6 +42,11 @@ public class ModelMission {
 		return courant;
 	}
 	
+	public ObservableList<String> getType() {
+		return type;
+	}
+
+	
 	
 	// Actualisations
 	
@@ -50,12 +59,13 @@ public class ModelMission {
 	// Actions
 	
 	public void preparerAjouter() {
-//		mapper.update( courant, new Mission() );
+		
+		mapper.update( courant, new Mission() );
 	}
 
 	
 	public void preparerModifier( Mission item ) {
-//		mapper.update( courant, daoMission.retrouver( item.getId() ) );
+		mapper.update( courant, daoMission.retrouver( item.getId() ) );
 	}
 	
 	public void validerMiseAJour() {
@@ -100,7 +110,7 @@ public class ModelMission {
 	}
 		public void supprimer( Mission item ) {
 			daoMission.supprimer( item.getId() );
-//			mapper.update( courant, UtilFX.findNext( liste, item ) );
+			mapper.update( courant, UtilFX.findNext( liste, item ) );
 		}
 
 	

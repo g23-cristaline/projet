@@ -21,7 +21,8 @@ INSERT INTO Mission (nom_Mission,horaire,localisation,typem) VALUES
 ('Cras dictum ','15:40:46','et magnis dis parturient montes, nascetur','felis eget varius ultrices, mauris ipsum porta elit,'),
 ('magnis dis parturient','00:18:47','Ut semper pretium neque. Morbi quis urna.','mollis lectus pede et risus. Quisque libero'),
 ('at augue id','08:26:15','vitae, orci.','velit. Aliquam nisl. Nulla eu neque pellentesque massa'),
-('dolor dolor','08:00:00','consectetuer adipiscing','libero lacus, varius et,');
+('dolor dolor','08:00:00','consectetuer adipiscing','libero lacus, varius et,'),
+('dol dolar','08:01:00','consect cristaline','libero lacus, varius et,');
 
 -- Categorie
   
