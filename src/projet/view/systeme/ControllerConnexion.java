@@ -69,8 +69,12 @@ public class ControllerConnexion {
 	@FXML
 	private void creer_identifiant() {
 		Platform.runLater(() ->{
+<<<<<<< HEAD
 //			managerGui.showView(EnumView.NewIdentifiant);
 			managerGui.showView(EnumView.ListeParticipant);
+=======
+			managerGui.showView(EnumView.MissionListe);
+>>>>>>> branch 'master' of https://github.com/g23-cristaline/projet.git
 		});
 	}
 	

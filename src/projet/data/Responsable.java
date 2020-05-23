@@ -1,5 +1,6 @@
 package projet.data;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javafx.beans.property.Property;
@@ -17,6 +18,10 @@ public class Responsable {
 	private final StringProperty code = new SimpleStringProperty();
 	private final StringProperty telephone = new SimpleStringProperty();
 	private final StringProperty info_supplementaires = new SimpleStringProperty();
+	private final Property<LocalDate> date_naissance = new SimpleObjectProperty<>();
+	private final Property<LocalDate> date_permis = new SimpleObjectProperty<>();
+	private final StringProperty numero_permis = new SimpleStringProperty();
+	private final StringProperty lieu_permis = new SimpleStringProperty();
 	
 	public final Property<Integer> idProperty() {
 		return this.id;
@@ -169,8 +174,77 @@ public class Responsable {
 	public final void setInfo_supplementaires(final String info_supplementaires) {
 		this.info_supplementairesProperty().set(info_supplementaires);
 	}
+
+
+	public final Property<LocalDate> date_naissanceProperty() {
+		return this.date_naissance;
+	}
 	
+
+
+	public final LocalDate getDate_naissance() {
+		return this.date_naissanceProperty().getValue();
+	}
 	
+
+
+	public final void setDate_naissance(final LocalDate date_naissance) {
+		this.date_naissanceProperty().setValue(date_naissance);
+	}
+	
+
+
+	public final Property<LocalDate> date_permisProperty() {
+		return this.date_permis;
+	}
+	
+
+
+	public final LocalDate getDate_permis() {
+		return this.date_permisProperty().getValue();
+	}
+	
+
+
+	public final void setDate_permis(final LocalDate date_permis) {
+		this.date_permisProperty().setValue(date_permis);
+	}
+	
+
+
+	public final StringProperty numero_permisProperty() {
+		return this.numero_permis;
+	}
+	
+
+
+	public final String getNumero_permis() {
+		return this.numero_permisProperty().get();
+	}
+	
+
+
+	public final void setNumero_permis(final String numero_permis) {
+		this.numero_permisProperty().set(numero_permis);
+	}
+	
+
+
+	public final StringProperty lieu_permisProperty() {
+		return this.lieu_permis;
+	}
+	
+
+
+	public final String getLieu_permis() {
+		return this.lieu_permisProperty().get();
+	}
+	
+
+
+	public final void setLieu_permis(final String lieu_permis) {
+		this.lieu_permisProperty().set(lieu_permis);
+	}
 	
 	
 }

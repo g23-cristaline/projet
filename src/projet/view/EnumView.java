@@ -29,6 +29,9 @@ public enum EnumView implements IEnumView {
 	EtatPersonnesParCateogire2	( "personne/ViewEtatPersonnesParCategorie2.fxml" ),
 	NewIdentifiant		( "systeme/ViewCreatId.fxml" ),
 	ListeParticipant ("test/ViewTestDaoParticipantListe.fxml"),
+	MissionListe			( "mission/ViewMissionListe.fxml" ),
+	MissionForm			( "mission/ViewmissionForm.fxml" ),
+
 	;
 
 	

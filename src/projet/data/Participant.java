@@ -16,9 +16,6 @@ public class Participant {
 	private final Property <Equipe> equipe = new SimpleObjectProperty<>();
 	private final StringProperty telephone = new SimpleStringProperty();
 	private final Property<LocalDate> date_naissance = new SimpleObjectProperty();
-	
-	
-	
 	public final Property<Integer> idProperty() {
 		return this.id;
 	}
