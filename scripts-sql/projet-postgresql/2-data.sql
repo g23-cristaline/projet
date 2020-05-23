@@ -15,6 +15,15 @@ DELETE FROM categorie;
 
 
 --mission
+INSERT INTO Mission (nom_Mission,horaire,localisation,typem) VALUES 
+('Donec ','12:02:10','a','vitae erat vel pede blandit congue. In'),
+('tristique ','17:15:20','imperdiet ornare. In faucibus.','pulvinar'),
+('leo','06:09:50','semper egestas, urna justo faucibus lectus, a','ullamcorper magna. Sed eu eros. Nam'),
+('imperdiet','23:19:32','tristique senectus et netus et malesuada fames','ullamcorper, nisl arcu iaculis'),
+('Cras dictum ','15:40:46','et magnis dis parturient montes, nascetur','felis eget varius ultrices, mauris ipsum porta elit,'),
+('magnis dis parturient','00:18:47','Ut semper pretium neque. Morbi quis urna.','mollis lectus pede et risus. Quisque libero'),
+('at augue id','08:26:15','vitae, orci.','velit. Aliquam nisl. Nulla eu neque pellentesque massa'),
+('dolor dolor','08:00:00','consectetuer adipiscing','libero lacus, varius et,');
 
 -- Categorie
   
@@ -40,7 +49,7 @@ VALUES (1,2,'Fredericka','UP',FALSE,FALSE,'RBC89YYT9IV','05 38 32 45 88','Lorem 
 (9,1,'Barclay','Fr',FALSE,FALSE,'YZO53ZQV2SU','07 97 46 81 22','Lorem','17/04/20');
 
 ALTER TABLE responsable ALTER COLUMN id RESTART WITH 10;
-
+ 
 --utilisateur
 INSERT INTO "utilisateur" (id,pseudo,pass,mail,id_responsable) VALUES (1,'Zachery','QAG84IGG4AY','scelerisque@In.edu',7),
 (2,'Geoffrey','DYG69HRD6ZP','libero.est.congue@Maurismagna.ca',2),

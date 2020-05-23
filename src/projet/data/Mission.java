@@ -1,6 +1,7 @@
 package projet.data;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 
 import javafx.beans.property.Property;
@@ -11,7 +12,7 @@ import javafx.beans.property.StringProperty;
 public class Mission {
 	private final Property <Integer> id = new SimpleObjectProperty<>();
 	private final StringProperty nom_mission = new SimpleStringProperty();
-	private final Property<LocalDate>	horaire	= new SimpleObjectProperty<>();
+	private final Property<LocalTime>	horaire	= new SimpleObjectProperty<>();
 	private final StringProperty localisation = new SimpleStringProperty();
 	private final StringProperty type = new SimpleStringProperty();
 	
@@ -55,17 +56,17 @@ public class Mission {
 		return Objects.equals(id.getValue(), other.id.getValue() );
 	}
 
-	public final Property<LocalDate> horaireProperty() {
+	public final Property<LocalTime> horaireProperty() {
 		return this.horaire;
 	}
 	
 
-	public final LocalDate getHoraire() {
+	public final LocalTime getHoraire() {
 		return this.horaireProperty().getValue();
 	}
 	
 
-	public final void setHoraire(final LocalDate horaire) {
+	public final void setHoraire(final LocalTime horaire) {
 		this.horaireProperty().setValue(horaire);
 	}
 	
@@ -98,6 +99,12 @@ public class Mission {
 	public final void setType(final String type) {
 		this.typeProperty().set(type);
 	}
+
+	@Override
+	public String toString() {
+		return   nom_mission.get() ;
+	}
+
 	
 	
 

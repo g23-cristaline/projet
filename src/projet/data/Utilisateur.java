@@ -20,40 +20,40 @@ public class Utilisateur {
 	public final Property<Integer> idProperty() {
 		return this.id;
 	}
-	
+
 	public final Integer getId() {
 		return this.idProperty().getValue();
 	}
-	
+
 	public final void setId(final Integer id) {
 		this.idProperty().setValue(id);
 	}
-	
+
 	public final StringProperty pseudoProperty() {
 		return this.pseudo;
 	}
-	
+
 	public final String getPseudo() {
 		return this.pseudoProperty().get();
 	}
-	
+
 	public final void setPseudo(final String pseudo) {
 		this.pseudoProperty().set(pseudo);
 	}
-	
+
 	public final StringProperty passProperty() {
 		return this.pass;
 	}
-	
+
 	public final String getPass() {
 		return this.passProperty().get();
 	}
-	
+
 	public final void setPass(final String pass) {
 		this.passProperty().set(pass);
 	}
 	public boolean isInRole( String role ) {
-		
+
 		if ( role != null ) {
 			for ( String r : roles ) {
 				if ( role.equals( r ) ) {
@@ -66,33 +66,33 @@ public class Utilisateur {
 	public final StringProperty mailProperty() {
 		return this.mail;
 	}
-	
+
 
 	public final String getMail() {
 		return this.mailProperty().get();
 	}
-	
+
 
 	public final void setMail(final String mail) {
 		this.mailProperty().set(mail);
 	}
-	
+
 
 	public final Property<Responsable> responsableProperty() {
 		return this.responsable;
 	}
-	
+
 
 	public final Responsable getResponsable() {
 		return this.responsableProperty().getValue();
 	}
-	
+
 
 	public final void setResponsable(final Responsable responsable) {
 		this.responsableProperty().setValue(responsable);
 	}
-	
-	
+
+
 	public ObservableList<String> getRoles() {
 		return roles;
 	}
@@ -113,7 +113,7 @@ public class Utilisateur {
 		Utilisateur other = (Utilisateur) obj;
 		return Objects.equals(id.getValue(), other.id.getValue() );
 	}
-	
-		
+
+
 
 }

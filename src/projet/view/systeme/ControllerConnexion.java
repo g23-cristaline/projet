@@ -69,7 +69,7 @@ public class ControllerConnexion {
 	@FXML
 	private void creer_identifiant() {
 		Platform.runLater(() ->{
-			managerGui.showView(EnumView.NewIdentifiant);
+			managerGui.showView(EnumView.MissionListe);
 		});
 	}
 	
