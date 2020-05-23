@@ -4,7 +4,6 @@ SET search_path TO cristaline;
 DELETE FROM Executer;
 DELETE FROM role;
 DELETE FROM Mission;
-delete from Localisation;
 DELETE FROM Participant;
 DELETE FROM Equipe;
 DELETE FROM Participant_attente;
