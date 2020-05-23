@@ -23,11 +23,15 @@ CREATE TABLE  responsable(
 	idcategorie 		INT NOT NULL,
 	nom_complet         VARCHAR (100) NOT NULL ,
 	adresse             VARCHAR (50) NOT NULL ,
+	date_naissance         DATE  NOT NULL ,
 	permis_conduire     BOOL  NOT NULL ,
 	brevet_secourisme   BOOL  NOT NULL ,
 	code                VARCHAR (50) NOT NULL  ,
 	telephone 			VARCHAR (25) NOT NULL,
 	info_supplementaires TEXT,
+	numero_permi           VARCHAR (50) ,
+	date_permis            DATE,
+	Lieu_Permis            VARCHAR (50),
 	CONSTRAINT responsable_PK PRIMARY KEY (id),
 	FOREIGN KEY (idcategorie) REFERENCES categorie(idcategorie)
 )WITHOUT OIDS;
@@ -71,8 +75,10 @@ CREATE TABLE  Participant_attente(
 	nom_complet           VARCHAR (50) NOT NULL ,
 	adresse               VARCHAR (50) NOT NULL ,
 	mail                  VARCHAR (50) NOT NULL ,
+	date_naissance      DATE  NOT NULL ,
 	telephone             VARCHAR (25) NOT NULL ,
 	id_Equipe_attente     INT  NOT NULL  ,
+	date_naissance      DATE NOT NULL,
 	CONSTRAINT Participant_attente_PK PRIMARY KEY (id)
 
 	,CONSTRAINT Participant_attente_Equipe_attente_FK FOREIGN KEY (id_Equipe_attente) REFERENCES  Equipe_attente(id)
@@ -101,13 +107,14 @@ CREATE TABLE  Participant(
 	nom_complet           VARCHAR (50) NOT NULL ,
 	adresse               VARCHAR (50) NOT NULL ,
 	mail                  VARCHAR (50) NOT NULL ,
+	date_naissance      DATE  NOT NULL ,
 	telephone             VARCHAR (25) NOT NULL ,
 	id_Equipe             INT  NOT NULL  ,
+	date_naissance      DATE NOT NULL,
 	CONSTRAINT Participant_PK PRIMARY KEY (id)
 
 	,CONSTRAINT Participant_Equipe_FK FOREIGN KEY (id_Equipe) REFERENCES  Equipe(id)
 )WITHOUT OIDS;
-
 
 ------------------------------------------------------------
 -- Table: Mission

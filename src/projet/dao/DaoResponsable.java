@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,14 +34,18 @@ public class DaoResponsable {
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
 		ResultSet 			rs 		= null;
-		String				sql;
+		String				sql,sql2;
 
 		try {
 			cn = dataSource.getConnection();
 
 			// Insère le responsable
-			sql = "INSERT INTO responsable ( idcategorie, nom_complet, adresse,permis_conduire,brevet_secourisme,code,telephone,info_supplementaires ) VALUES ( ?, ?, ?,?,?,?,?,? )";
-			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
+			sql = "INSERT INTO responsable ( idcategorie, nom_complet, adresse,permis_conduire,brevet_secourisme,code,telephone,info_supplementaires,date_naissance ) VALUES ( ?, ?, ?,?,?,?,?,?,? )";
+			sql2= "INSERT INTO responsable ( idcategorie, nom_complet, adresse,permis_conduire,brevet_secourisme,code,telephone,info_supplementaires,date_naissance,numero_permis,date_permis,lieu_permis ) VALUES ( ?, ?, ?,?,?,?,?,?,?,?,?,? )";
+			if(responsable.getCategorie().getId()==1)
+				stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
+			else
+				stmt = cn.prepareStatement(sql2,Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(	1, responsable.getCategorie().getId() );
 			stmt.setString(	2, responsable.getNom_complet() );
 			stmt.setString(	3, responsable.getAdresse() );
@@ -49,6 +54,13 @@ public class DaoResponsable {
 			stmt.setString(	6, responsable.getCode() );
 			stmt.setString(	7, responsable.getTelephone() );
 			stmt.setString(	8, responsable.getInfo_supplementaires() );
+			stmt.setObject(9, responsable.getDate_naissance());
+			if(responsable.getCategorie().getId()==1)
+			{
+				stmt.setString(10,responsable.getNumero_permis());
+				stmt.setObject(11,responsable.getDate_permis());
+				stmt.setString(12, responsable.getLieu_permis());
+			}
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -83,7 +95,8 @@ public class DaoResponsable {
 					+ "brevet_secourisme=?,"
 					+ "code=?,"
 					+ "telephone=?,"
-					+ "info_supplementaires=?"
+					+ "info_supplementaires=?,"
+					+ "date_naissance=?"
 					+ " WHERE id =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, responsable.getCategorie().getId() );
@@ -94,7 +107,8 @@ public class DaoResponsable {
 			stmt.setObject( 6, responsable.getCode() );
 			stmt.setObject( 7, responsable.getTelephone() );
 			stmt.setObject( 8, responsable.getInfo_supplementaires() );
-			stmt.setObject( 9, responsable.getId() );
+			stmt.setObject (9,responsable.getDate_naissance());
+			stmt.setObject( 10, responsable.getId() );
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -221,6 +235,10 @@ public class DaoResponsable {
 		responsable.setCategorie( daoCategorie.retrouver( rs.getObject("idcategorie", Integer.class) ) );
 		responsable.setCode(rs.getObject( "code", String.class ));
 		responsable.setTelephone(rs.getObject( "telephone", String.class ));
+		responsable.setDate_naissance(rs.getObject("date_naissance", LocalDate.class));
+		responsable.setDate_permis(rs.getObject("date_permis", LocalDate.class));
+		responsable.setNumero_permis(rs.getObject("numero_permi",String.class));
+		responsable.setLieu_permis(rs.getObject("Lieu_Permis",String.class));
 		responsable.setInfo_supplementaires(rs.getObject( "info_supplementaires", String.class ));
 		return responsable;
 	}
