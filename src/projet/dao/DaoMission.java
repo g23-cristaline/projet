@@ -21,6 +21,10 @@ public class DaoMission {
 	
 	@Inject
 	DataSource dataSource;
+	@Inject 
+	
+	DaoLocalisation daolocalisation;
+
 	
 	// Actions
 
@@ -35,12 +39,12 @@ public class DaoMission {
 				cn = dataSource.getConnection();
 
 				// Insère la mission
-				sql = "INSERT INTO mission ( nom_mission, horaire,localisation,typem) VALUES (?,?,?,?)";
+				sql = "INSERT INTO mission ( nom_mission, horaire,numerolocal,typem) VALUES (?,?,?,?)";
 				stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
 				//stmt.setInt(1, mission.getId() );
 				stmt.setString(	1, mission.getNom_mission());
 				stmt.setObject(	2, mission.getHoraire());
-				stmt.setString(3, mission.getLocalisation());
+				stmt.setObject(3, mission.getLocalisation().getNumero());
 				stmt.setString(4, mission.getType());
 				stmt.executeUpdate();
 
@@ -70,11 +74,11 @@ public class DaoMission {
 
 				// Modifie la mission
 	
-				sql = "UPDATE mission SET nom_mission = ?, horaire = ?,localisation = ?,typem = ? WHERE id =  ?";
+				sql = "UPDATE mission SET nom_mission = ?, horaire = ?,numerolocal = ?,typem = ? WHERE id =  ?";
 				stmt = cn.prepareStatement( sql );
 				stmt.setString(1, mission.getNom_mission());
 				stmt.setObject(2, mission.getHoraire());
-				stmt.setString(3, mission.getLocalisation());
+				stmt.setObject(3, mission.getLocalisation().getNumero());
 				stmt.setString(4, mission.getType());
 				stmt.setObject(5,mission.getId() );
 				stmt.executeUpdate();
@@ -171,7 +175,7 @@ public class DaoMission {
 			mission.setId(rs.getObject( "id", Integer.class ));
 			mission.setNom_mission(rs.getObject( "nom_mission", String.class ));
 			mission.setHoraire((LocalTime) rs.getObject( "Horaire", LocalTime.class ));
-			mission.setLocalisation(rs.getObject("localisation",String.class));
+			mission.setLocalisation(daolocalisation.retrouver(rs.getObject("numerolocal",Integer.class)));
 			mission.setType(rs.getObject("typem",String.class));
 			return mission;
 		}

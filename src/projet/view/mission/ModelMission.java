@@ -7,8 +7,10 @@ import javafx.collections.ObservableList;
 import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
+import projet.dao.DaoLocalisation;
 import projet.dao.DaoMission;
 import projet.data.Compte;
+import projet.data.Localisation;
 import projet.data.Memo;
 import projet.data.Mission;
 
@@ -19,7 +21,9 @@ public class ModelMission {
 	// Données observables 
 	
 	private final ObservableList<Mission> liste = FXCollections.observableArrayList(); 
-	private final ObservableList<String> type = FXCollections.observableArrayList("m1","m2"); 
+	private final ObservableList<String> type = FXCollections.observableArrayList("m1","m2");
+	private final ObservableList<Localisation> listlocal = FXCollections.observableArrayList();
+	
 	
 	
 	private final Mission	courant = new Mission();
@@ -30,7 +34,8 @@ public class ModelMission {
 	private IMapper			mapper;
     @Inject
 	private DaoMission		daoMission;
-    
+    @Inject 
+    private DaoLocalisation  daoLocalisation;
 
 	// Getters
 	
@@ -46,12 +51,18 @@ public class ModelMission {
 		return type;
 	}
 
+	public ObservableList<Localisation> getListlocal() {
+		return listlocal;
+	}
 	
 	
 	// Actualisations
 	
+	
+
 	public void actualiserListe() {
 		liste.setAll( daoMission.listerTout() );
+		listlocal.setAll(daoLocalisation.listerTout());
  	}
 	
 	
@@ -82,20 +93,20 @@ public class ModelMission {
 			message.append( "\nLe nom de la mission est trop long : 25 lettres maximum." );
 		} 
 		
-		if( courant.getLocalisation() == null || courant.getLocalisation().isEmpty() ) {
-			message.append( "\nLa localisation ne doit pas être vide." );
-		} else  if ( courant.getLocalisation().length()< 3 ) {
-			message.append( "\nLa localisation est trop courte : 3 lettres minimum." );
-		} else  if ( courant.getLocalisation().length()> 25 ) {
-			message.append( "\nLa localisation est trop longue : 25 lettres maximum." );
-		}
+//		if( courant.getLocalisation() == null || courant.getLocalisation().isEmpty() ) {
+//			message.append( "\nLa localisation ne doit pas être vide." );
+//		} else  if ( courant.getLocalisation().length()< 3 ) {
+//			message.append( "\nLa localisation est trop courte : 3 lettres minimum." );
+//		} else  if ( courant.getLocalisation().length()> 25 ) {
+//			message.append( "\nLa localisation est trop longue : 25 lettres maximum." );
+//		}
 		
-		if( courant.getType() == null || courant.getType().isEmpty() ) {
-			message.append( "\nLe type ne doit pas être vide." );
-		} else  if ( courant.getType().length()> 100 ) {
-			message.append( "\nL'adresse e-mail est trop longue : 100 maxi." );
-		}
-		
+//		if( courant.getType() == null || courant.getType().isEmpty() ) {
+//			message.append( "\nLe type ne doit pas être vide." );
+//		} else  if ( courant.getType().length()> 100 ) {
+//			message.append( "\nL'adresse e-mail est trop longue : 100 maxi." );
+//		}
+//		
 		
 		// Effectue la mise à jour
 		

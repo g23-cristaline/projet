@@ -37,7 +37,6 @@
                   <Label text="Horaire" GridPane.rowIndex="2" />
                   <TextField fx:id="textFieldHoraire" prefHeight="25.0" prefWidth="117.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Localisation" GridPane.rowIndex="3" />
-                  <TextField fx:id="textFieldLocalisation" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <VBox GridPane.rowIndex="4">
                      <children>
                         <Label text="Types" />
@@ -47,6 +46,7 @@
                      </padding>
                   </VBox>
                   <ListView fx:id="listviewType" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ListView fx:id="listviewLocal" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>

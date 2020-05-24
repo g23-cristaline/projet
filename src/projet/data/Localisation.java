@@ -8,20 +8,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Localisation {
-	private final Property<Integer> id = new SimpleObjectProperty<>();
+	
 	private final Property<Integer> numero = new SimpleObjectProperty<>();
 	private final StringProperty position = new SimpleStringProperty();
-	public final Property<Integer> idProperty() {
-		return this.id;
-	}
 	
-	public final Integer getId() {
-		return this.idProperty().getValue();
-	}
 	
-	public final void setId(final Integer id) {
-		this.idProperty().setValue(id);
-	}
 	
 	public final Property<Integer> numeroProperty() {
 		return this.numero;
@@ -49,7 +40,7 @@ public class Localisation {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id.getValue() );
+		return Objects.hash(numero.getValue() );
 	}
 
 	@Override
@@ -61,6 +52,13 @@ public class Localisation {
 		if (getClass() != obj.getClass())
 			return false;
 		Localisation other = (Localisation) obj;
-		return Objects.equals(id.getValue(), other.id.getValue() );
+		return Objects.equals(numero.getValue(), other.numero.getValue() );
 	}
+
+	@Override
+	public String toString() {
+		return   position.get() ;
+	}
+	
+	
 }

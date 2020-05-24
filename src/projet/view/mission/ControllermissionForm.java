@@ -11,11 +11,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import jfox.javafx.util.ConverterStringInteger;
+import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.view.IManagerGui;
+import projet.data.Localisation;
 import projet.data.Mission;
 import projet.view.EnumView;
 
@@ -35,11 +39,11 @@ public class ControllermissionForm {
 	@FXML
 	private TextField			textFieldNomMission;
 	@FXML
-	private TextField			textFieldLocalisation;
-	@FXML
 	private TextField			textFieldHoraire;
 	@FXML
 	private ListView		listviewType;
+	@FXML
+	private ListView		listviewLocal;
 	
 	
 
@@ -58,6 +62,7 @@ public class ControllermissionForm {
 	@FXML
 	private void initialize() {
 		
+		modelMission.actualiserListe();
 		courant = modelMission.getCourant();
 		
 
@@ -65,11 +70,14 @@ public class ControllermissionForm {
 		courant = modelMission.getCourant();
 		textFieldId.textProperty().bindBidirectional( courant.idProperty(), new ConverterStringInteger());
 		textFieldNomMission.textProperty().bindBidirectional( courant.nom_missionProperty() );
-		textFieldLocalisation.textProperty().bindBidirectional( courant.localisationProperty() );
-		//textFieldHoraire.textProperty().bindBidirectional( courant.horaireProperty() );
+		//textFieldLocalisation.textProperty().bindBidirectional( courant.localisationProperty() );
 		listviewType.setItems(modelMission.getType());
+		listviewLocal.setItems(modelMission.getListlocal());
+		//courant.horaireProperty().bindBidirectional(textFieldHoraire.textProperty(),new ConverterStringLocalDate();
+		//textFieldHoraire.setText(courant.getHoraire().toString());
+		
 		recuptype();
-        
+        recuplocal();
 	}
 	
 	// Actions
@@ -81,11 +89,22 @@ public class ControllermissionForm {
 		
 		@FXML
 		private void doValider() {
+			try {
+				courant.setHoraire(LocalTime.parse(textFieldHoraire.getText(), DateTimeFormatter.ISO_TIME));
+				modelMission.validerMiseAJour();
+				modelMission.actualiserListe();
+				managerGui.showView( EnumView.MissionListe );
+				
+			}catch(Exception E) {
+				
+				Alert erreur = new Alert(AlertType.WARNING);
+				erreur.setTitle("warning");
+				erreur.setHeaderText(null);
+				erreur.setContentText("L'horaire n'est pas dans le bon format");
+				erreur.showAndWait();
+			}
 			
-			courant.setHoraire(LocalTime.parse(textFieldHoraire.getText(), DateTimeFormatter.ISO_TIME));
-			modelMission.validerMiseAJour();
-			modelMission.actualiserListe();
-			managerGui.showView( EnumView.MissionListe );
+			
 		}
 
 		@FXML
@@ -93,6 +112,10 @@ public class ControllermissionForm {
 			listviewType.getSelectionModel().selectedIndexProperty().addListener(observable->{courant.setType((String) listviewType.getSelectionModel().getSelectedItem());});
 		}
 		
-	
-
+		@FXML
+		private void recuplocal() {
+			listviewLocal.getSelectionModel().selectedIndexProperty().addListener(observable->{courant.setLocalisation( (Localisation) listviewLocal.getSelectionModel().getSelectedItem());});
+		}
+		
+        
 }

@@ -1,5 +1,7 @@
 package projet.view.mission;
 
+import java.time.LocalTime;
+
 import javax.inject.Inject;
 
 import javafx.fxml.FXML;
@@ -9,6 +11,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
+import projet.data.Localisation;
 import projet.data.Mission;
 import projet.view.EnumView;
 
@@ -72,8 +75,10 @@ public class ControllerMissionListe {
 
 		@FXML
 		private void doModifier() {
+			recuphoraire();
 			modelMission.preparerModifier((Mission) listvieww.getSelectionModel().getSelectedItem());
 			managerGui.showView( EnumView.MissionForm );
+			
 		}
 
 		@FXML
@@ -114,6 +119,11 @@ public class ControllerMissionListe {
 			}
 		}
 
+		@FXML
+		private void recuphoraire() {
+			listvieww.getSelectionModel().selectedIndexProperty().addListener(observable->{modelMission.getCourant().setHoraire( ((Mission) listvieww.getSelectionModel().getSelectedItem()).getHoraire());});
+		}
+		
 
 
 }
