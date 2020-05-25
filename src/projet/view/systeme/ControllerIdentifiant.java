@@ -40,6 +40,7 @@ public class ControllerIdentifiant {
 		user.mailProperty().bindBidirectional(mail.textProperty());
 		user.pseudoProperty().bindBidirectional(login.textProperty());
 		user.passProperty().bindBidirectional(pass.textProperty());
+		
 		bteDialog = new Alert(AlertType.ERROR);
 		bteDialog.setTitle("ERROR");
 		bteDialog.setHeaderText(null);

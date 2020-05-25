@@ -121,7 +121,7 @@ public class ControllerMissionListe {
 
 		@FXML
 		private void recuphoraire() {
-			listvieww.getSelectionModel().selectedIndexProperty().addListener(observable->{modelMission.getCourant().setHoraire( ((Mission) listvieww.getSelectionModel().getSelectedItem()).getHoraire());});
+			listvieww.getSelectionModel().selectedIndexProperty().addListener(observable->{modelMission.setCourant((Mission) listvieww.getSelectionModel().getSelectedItem());});
 		}
 		
 

@@ -26,7 +26,7 @@ public class ModelMission {
 	
 	
 	
-	private final Mission	courant = new Mission();
+	private  Mission	courant = new Mission();
 	
 	 
 	// Autres champs
@@ -42,11 +42,13 @@ public class ModelMission {
 	public ObservableList<Mission> getListe() {
 		return liste;
 	}
-
 	public Mission getCourant() {
 		return courant;
 	}
-	
+	public void setCourant(Mission courant) {
+		this.courant=courant;
+	}
+
 	public ObservableList<String> getType() {
 		return type;
 	}

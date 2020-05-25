@@ -9,6 +9,7 @@ import projet.data.Compte;
 import projet.data.Memo;
 import projet.data.Mission;
 import projet.data.Personne;
+import projet.data.Responsable;
 import projet.data.Service;
 import projet.data.Utilisateur;
 
@@ -29,5 +30,6 @@ public interface IMapper {
 	Service update( @MappingTarget Service target, Service source );
 
      Mission update(@MappingTarget Mission courant, Mission mission);
+     Responsable update (@MappingTarget Responsable courant, Responsable source);
 	
 }

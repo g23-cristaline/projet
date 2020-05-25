@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
@@ -41,9 +42,9 @@ public class ControllermissionForm {
 	@FXML
 	private TextField			textFieldHoraire;
 	@FXML
-	private ListView		listviewType;
+	private ChoiceBox<String>		listviewType;
 	@FXML
-	private ListView		listviewLocal;
+	private ChoiceBox<Localisation> localisation;
 	
 	
 
@@ -56,7 +57,7 @@ public class ControllermissionForm {
 	@Inject
 	private ModelMission		modelMission;
 
-
+	
 	// Initialisation du Controller
 	
 	@FXML
@@ -72,9 +73,10 @@ public class ControllermissionForm {
 		textFieldNomMission.textProperty().bindBidirectional( courant.nom_missionProperty() );
 		//textFieldLocalisation.textProperty().bindBidirectional( courant.localisationProperty() );
 		listviewType.setItems(modelMission.getType());
-		listviewLocal.setItems(modelMission.getListlocal());
+		localisation.setItems(modelMission.getListlocal());
+		
 		//courant.horaireProperty().bindBidirectional(textFieldHoraire.textProperty(),new ConverterStringLocalDate();
-		//textFieldHoraire.setText(courant.getHoraire().toString());
+		textFieldHoraire.setText(courant.getHoraire().toString());
 		
 		recuptype();
         recuplocal();
@@ -114,7 +116,7 @@ public class ControllermissionForm {
 		
 		@FXML
 		private void recuplocal() {
-			listviewLocal.getSelectionModel().selectedIndexProperty().addListener(observable->{courant.setLocalisation( (Localisation) listviewLocal.getSelectionModel().getSelectedItem());});
+			localisation.getSelectionModel().selectedIndexProperty().addListener(observable->{courant.setLocalisation( (Localisation) localisation.getSelectionModel().getSelectedItem());});
 		}
 		
         

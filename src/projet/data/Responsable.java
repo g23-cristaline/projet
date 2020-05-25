@@ -245,6 +245,12 @@ public class Responsable {
 	public final void setLieu_permis(final String lieu_permis) {
 		this.lieu_permisProperty().set(lieu_permis);
 	}
+
+
+	@Override
+	public String toString() {
+		return  nom_complet.get();
+	}
 	
 	
 }
