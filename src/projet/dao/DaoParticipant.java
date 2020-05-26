@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
 import projet.data.Equipe;
+import projet.data.Mission;
 import projet.data.Participant;
 import projet.data.Personne;
 
@@ -109,6 +110,87 @@ public class DaoParticipant {
 		
 		return participant;
 	}
+	
+	public Participant retrouver(int idParticipant)  {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM participant WHERE id = ?";
+            stmt = cn.prepareStatement(sql);
+            stmt.setObject( 1, idParticipant);
+            rs = stmt.executeQuery();
+
+            if ( rs.next() ) {
+                return construireParticipant(rs);
+            } else {
+            	return null;
+            }
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	public void supprimer(int IdParticipant) {
+		
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+			sql="DELETE from participant where id=?";
+			
+			stmt = cn.prepareStatement(sql);
+            stmt.setObject( 1, IdParticipant);
+             stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( stmt, cn );
+		}
+		
+		
+	}
+	
+	public void modifier(Participant participant)  {
+	Connection			cn		= null;
+	PreparedStatement	stmt	= null;
+	String 				sql;
+
+	try {
+		cn = dataSource.getConnection();
+
+		// Modifie le participant
+		sql = "UPDATE participant SET   nom_complet= ?, adresse= ?, mail= ?, telephone= ?, date_naissance= ?, id_equipe= ?  where id=?";
+		stmt = cn.prepareStatement( sql );
+		
+		stmt.setObject( 1, participant.getNom_complet() );
+		stmt.setObject( 2, participant.getAdresse() );
+		stmt.setObject( 3, participant.getMail() );
+		stmt.setObject( 4, participant.getTelephone() );
+		stmt.setObject( 5, participant.getDate_naissance() );
+		stmt.setObject( 6, participant.getEquipe().getId() );
+		stmt.setObject( 7, participant.getId() );
+		
+		
+		stmt.executeUpdate();
+		
+	} catch (SQLException e) {
+		throw new RuntimeException(e);
+	} finally {
+		UtilJdbc.close( stmt, cn );
+	}
+	}
+	
 	
 	
 

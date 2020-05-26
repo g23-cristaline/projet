@@ -31,6 +31,8 @@ public enum EnumView implements IEnumView {
 	ListeParticipant ("test/ViewTestDaoParticipantListe.fxml"),
 	MissionListe			( "mission/ViewMissionListe.fxml" ),
 	MissionForm			( "mission/ViewmissionForm.fxml" ),
+	DetailParticipant ("test/ViewTestDaoParticipant.fxml"),
+	DetailParticipantModifiable ("test/ViewTestDaoParticipantmodifiable.fxml"),
 
 	;
 

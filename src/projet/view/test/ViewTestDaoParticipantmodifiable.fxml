@@ -13,27 +13,27 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="nom" editable="false">
+            <TextField fx:id="nom">
                <VBox.margin>
                   <Insets bottom="10.0" left="50.0" right="50.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="adresse" editable="false">
+            <TextField fx:id="adresse">
                <VBox.margin>
                   <Insets bottom="10.0" left="50.0" right="50.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="naissance" editable="false">
+            <TextField fx:id="naissance">
                <VBox.margin>
                   <Insets bottom="10.0" left="50.0" right="50.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="id" editable="false">
+            <TextField fx:id="id">
                <VBox.margin>
                   <Insets bottom="10.0" left="50.0" right="50.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="id_equipe" editable="false">
+            <TextField fx:id="id_equipe">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -41,12 +41,12 @@
                   <Insets bottom="10.0" left="50.0" right="50.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="telephone" editable="false">
+            <TextField fx:id="telephone">
                <VBox.margin>
                   <Insets bottom="10.0" left="50.0" right="50.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="mail" editable="false">
+            <TextField fx:id="mail">
                <VBox.margin>
                   <Insets left="50.0" right="50.0" />
                </VBox.margin>
@@ -57,7 +57,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="modifier" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#doModifier" text="Modifier" />
+            <Button fx:id="modifier" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#doValider" text="Valider" />
             <Button fx:id="supprimer" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#doSupprimer" text="Supprimer">
                <HBox.margin>
                   <Insets left="50.0" />
