@@ -53,6 +53,12 @@ public class DaoUtilisateur {
 			rs = stmt.getGeneratedKeys();
 			rs.next();
 			utilisateur.setId( rs.getObject( 1, Integer.class) );
+			if(utilisateur.getResponsable().getCode().startsWith("ADM")) 
+				utilisateur.getRoles().add("ADMINISTRATEUR");
+			else if(utilisateur.getResponsable().getCode().startsWith("MBR"))
+				utilisateur.getRoles().add("MEMBRE");
+			else if(utilisateur.getResponsable().getCode().startsWith("EXT"))
+				utilisateur.getRoles().add("EXTERNE");
 	
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -92,6 +98,7 @@ public class DaoUtilisateur {
 		
 		
 	}
+	
 	
 
 	public void modifier( Utilisateur utilisateur )  {

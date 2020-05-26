@@ -73,7 +73,7 @@ public class ControllerConnexion {
 //			managerGui.showView(EnumView.NewIdentifiant);
 			managerGui.showView(EnumView.ListeParticipant);
 
-		//managerGui.showView(EnumView.MissionListe);
+	//	managerGui.showView(EnumView.MissionListe);
 		});
 	}
 	

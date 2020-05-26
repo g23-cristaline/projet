@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,7 +37,6 @@
                   <Label text="Horaire" GridPane.rowIndex="2" />
                   <TextField fx:id="textFieldHoraire" prefHeight="25.0" prefWidth="117.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Localisation" GridPane.rowIndex="3" />
-                  <TextField fx:id="textFieldLocalisation" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <VBox GridPane.rowIndex="4">
                      <children>
                         <Label text="Types" />
@@ -45,6 +45,8 @@
                         <Insets top="5.0" />
                      </padding>
                   </VBox>
+                  <ChoiceBox fx:id="localisation" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ChoiceBox fx:id="listviewType" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
          </children>

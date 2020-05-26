@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane fx:id="paneRoot" prefHeight="350.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.responsable.ControllerResponsable">
+   <children>
+      <Label alignment="CENTER" styleClass="titre-vue" text="Liste des responsables" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+      <HBox alignment="CENTER" layoutY="75.0" prefHeight="200.0" prefWidth="405.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <Accordion>
+              <panes>
+                <TitledPane animated="false" text="Administrateurs">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="administrateurs" prefHeight="146.0" prefWidth="200.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" prefHeight="107.0" prefWidth="202.0" text="Membres">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="membres" prefHeight="145.0" prefWidth="200.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" prefHeight="151.0" prefWidth="202.0" text="Benevoles externes">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="109.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="externes" prefHeight="145.0" prefWidth="200.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="263.0" prefHeight="60.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

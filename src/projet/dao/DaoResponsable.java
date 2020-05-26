@@ -5,12 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
+
 
 import jfox.dao.jdbc.UtilJdbc;
 import projet.data.Responsable;
@@ -29,7 +32,7 @@ public class DaoResponsable {
 	
 	// Actions
 
-	public int inserer(Responsable responsable)  {
+	public int inserer(Responsable responsable,String role)  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -38,11 +41,19 @@ public class DaoResponsable {
 
 		try {
 			cn = dataSource.getConnection();
-
+			
+			Date date = new Date();
+	        String code=new Timestamp(date.getTime()).getTime()+"";
+	        if(role.equalsIgnoreCase("administrateur"))
+	        	code="ADM"+code;
+	        else if(role.equalsIgnoreCase("membre"))
+	        	code="MBR"+code;
+	        else 
+	        	code="EXT"+code;
 			// Insère le responsable
 			sql = "INSERT INTO responsable ( idcategorie, nom_complet, adresse,permis_conduire,brevet_secourisme,code,telephone,info_supplementaires,date_naissance ) VALUES ( ?, ?, ?,?,?,?,?,?,? )";
-			sql2= "INSERT INTO responsable ( idcategorie, nom_complet, adresse,permis_conduire,brevet_secourisme,code,telephone,info_supplementaires,date_naissance,numero_permis,date_permis,lieu_permis ) VALUES ( ?, ?, ?,?,?,?,?,?,?,?,?,? )";
-			if(responsable.getCategorie().getId()==1)
+			sql2= "INSERT INTO responsable ( idcategorie, nom_complet, adresse,permis_conduire,brevet_secourisme,code,telephone,info_supplementaires,date_naissance,numero_permi,date_permis,lieu_permis ) VALUES ( ?, ?, ?,?,?,?,?,?,?,?,?,? )";
+			if(responsable.getCategorie().getId()!=1)
 				stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
 			else
 				stmt = cn.prepareStatement(sql2,Statement.RETURN_GENERATED_KEYS);
@@ -51,7 +62,7 @@ public class DaoResponsable {
 			stmt.setString(	3, responsable.getAdresse() );
 			stmt.setBoolean(4, responsable.getPermis_conduire() );
 			stmt.setBoolean(5, responsable.getBrevet_secourisme() );
-			stmt.setString(	6, responsable.getCode() );
+			stmt.setString(	6, code );
 			stmt.setString(	7, responsable.getTelephone() );
 			stmt.setString(	8, responsable.getInfo_supplementaires() );
 			stmt.setObject(9, responsable.getDate_naissance());
@@ -67,6 +78,7 @@ public class DaoResponsable {
 			rs = stmt.getGeneratedKeys();
 			rs.next();
 			responsable.setId( rs.getObject( 1, Integer.class ) );
+			
 	
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

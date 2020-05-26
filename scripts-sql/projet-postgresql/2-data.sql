@@ -4,6 +4,7 @@ SET search_path TO cristaline;
 DELETE FROM Executer;
 DELETE FROM role;
 DELETE FROM Mission;
+DELETE FROM Localisation;
 DELETE FROM Participant;
 DELETE FROM Equipe;
 DELETE FROM Participant_attente;
@@ -13,16 +14,6 @@ DELETE FROM responsable;
 DELETE FROM categorie;
 
 
---mission
-INSERT INTO Mission (nom_Mission,horaire,localisation,typem) VALUES 
-('Donec ','12:02:10','a','vitae erat vel pede blandit congue. In'),
-('tristique ','17:15:20','imperdiet ornare. In faucibus.','pulvinar'),
-('leo','06:09:50','semper egestas, urna justo faucibus lectus, a','ullamcorper magna. Sed eu eros. Nam'),
-('imperdiet','23:19:32','tristique senectus et netus et malesuada fames','ullamcorper, nisl arcu iaculis'),
-('Cras dictum ','15:40:46','et magnis dis parturient montes, nascetur','felis eget varius ultrices, mauris ipsum porta elit,'),
-('magnis dis parturient','00:18:47','Ut semper pretium neque. Morbi quis urna.','mollis lectus pede et risus. Quisque libero'),
-('at augue id','08:26:15','vitae, orci.','velit. Aliquam nisl. Nulla eu neque pellentesque massa'),
-('dolor dolor','08:00:00','consectetuer adipiscing','libero lacus, varius et,');
 
 -- Categorie
   
@@ -61,14 +52,7 @@ INSERT INTO "utilisateur" (id,pseudo,pass,mail,id_responsable) VALUES (1,'Zacher
 (9,'Lara','CYH36XJX3RW','amet.ante@metusurnaconvallis.ca',8);
 ALTER TABLE utilisateur ALTER COLUMN id RESTART WITH 10;
 
--- Role
 
-INSERT INTO role (id, role) VALUES 
-  ( 1, 'ADMINISTRATEUR' ),
-  ( 1, 'MEMBRE' ),
-  ( 2, 'MEMBRE' ),
-  ( 3, 'EXTERNE' );
-  
 --Equipe_attente
 
 --participant_attente
@@ -79,6 +63,33 @@ INSERT INTO equipe (id,nom,categorie,nombre_repas,valide,paye) VALUES (1,'Brande
 --participant
 INSERT INTO participant (id,nom_complet,adresse,mail,telephone,id_equipe,date_naissance) VALUES (1,'Ocean','P.O. Box 781, 8453 A, Ave','lobortis.augue.scelerisque@tempor.net','08 84 25 27 48',5,'05-12-2020'),(2,'Rylee','Ap #906-6080 Ipsum Avenue','laoreet.lectus@placeratCrasdictum.co.uk','04 72 45 76 42',6,'07-09-2020'),(3,'Rebekah','452-6453 Sagittis. St.','dolor@nec.org','09 77 93 81 03',7,'11-01-2020'),(4,'Wynter','P.O. Box 146, 5002 Sed Rd.','Donec.porttitor.tellus@vel.org','03 72 28 15 08',5,'15-12-2020'),(5,'Lara','P.O. Box 458, 3089 Mauris Street','sem.mollis@atrisus.com','01 46 84 66 60',7,'18-05-2021'),(6,'Maris','579-7182 Velit. Street','semper.tellus@atpretiumaliquet.com','06 28 41 79 55',7,'02-11-2020'),(7,'Kessie','Ap #585-8420 Odio St.','odio.Nam@lobortisClass.org','02 14 53 71 48',2,'09-07-2020'),(8,'Yeo','P.O. Box 694, 6377 Vestibulum, Street','orci.Ut.sagittis@sodalespurus.co.uk','01 27 25 31 75',7,'03-12-2020'),(9,'Raven','1795 Molestie St.','Cras@egestas.org','04 82 98 02 64',5,'09-08-2019'),(10,'Raja','Ap #608-7539 Iaculis Rd.','in.faucibus.orci@velsapien.com','07 70 27 23 78',8,'29-09-2019');
 
+--localisation
+INSERT INTO Localisation (numero, position) VALUES
+(1,'Limoges'),
+(2,'Paris'),
+(3,'Lyon'),
+(4,'Nantes');
+
+--mission
+INSERT INTO Mission (nom_Mission,horaire,numerolocal,typem) VALUES 
+('Donec ','12:02:10',1,'vitae erat vel pede blandit congue. In'),
+('tristique ','17:15:20',2,'pulvinar'),
+('leo','06:09:50',3,'ullamcorper magna. Sed eu eros. Nam'),
+('imperdiet','23:19:32',4,'ullamcorper, nisl arcu iaculis'),
+('Cras dictum ','15:40:46',4,'felis eget varius ultrices, mauris ipsum porta elit,'),
+('magnis dis parturient','00:18:47',3,'mollis lectus pede et risus. Quisque libero'),
+('at augue id','08:26:15',2,'velit. Aliquam nisl. Nulla eu neque pellentesque massa'),
+('dolor dolor','08:00:00',1,'libero lacus, varius et,'),
+('dol dolar','08:01:00',2,'libero lacus, varius et,');
+
+-- Role
+
+INSERT INTO role (id, role) VALUES 
+  ( 1, 'ADMINISTRATEUR' ),
+  ( 1, 'MEMBRE' ),
+  ( 2, 'MEMBRE' ),
+  ( 3, 'EXTERNE' );
+  
 --execute
 
   

@@ -15,7 +15,7 @@ public class Utilisateur {
 	private final StringProperty pass = new SimpleStringProperty();
 	private final StringProperty mail = new SimpleStringProperty();
 	private final Property<Responsable> responsable = new SimpleObjectProperty<>();
-	private final ObservableList<String> roles = FXCollections.observableArrayList();
+	private  final ObservableList<String> roles = FXCollections.observableArrayList();
 	//getters et setters
 	public final Property<Integer> idProperty() {
 		return this.id;
@@ -96,6 +96,7 @@ public class Utilisateur {
 	public ObservableList<String> getRoles() {
 		return roles;
 	}
+	
 
 	@Override
 	public int hashCode() {

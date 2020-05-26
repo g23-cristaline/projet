@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
+import javafx.beans.property.ObjectPropertyBase;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,8 +14,9 @@ public class Mission {
 	private final Property <Integer> id = new SimpleObjectProperty<>();
 	private final StringProperty nom_mission = new SimpleStringProperty();
 	private final Property<LocalTime>	horaire	= new SimpleObjectProperty<>();
-	private final StringProperty localisation = new SimpleStringProperty();
+	private final Property<Localisation> localisation = new SimpleObjectProperty();
 	private final StringProperty type = new SimpleStringProperty();
+	
 	
 	public final Property<Integer> idProperty() {
 		return this.id;
@@ -71,20 +73,6 @@ public class Mission {
 	}
 	
 
-	public final StringProperty localisationProperty() {
-		return this.localisation;
-	}
-	
-
-	public final String getLocalisation() {
-		return this.localisationProperty().get();
-	}
-	
-
-	public final void setLocalisation(final String localisation) {
-		this.localisationProperty().set(localisation);
-	}
-	
 
 	public final StringProperty typeProperty() {
 		return this.type;
@@ -104,6 +92,22 @@ public class Mission {
 	public String toString() {
 		return   nom_mission.get() ;
 	}
+
+	public final Property<Localisation> localisationProperty() {
+		return this.localisation;
+	}
+	
+
+	public final Localisation getLocalisation() {
+		return this.localisationProperty().getValue();
+	}
+	
+
+	public final void setLocalisation(final Localisation localisation) {
+		this.localisationProperty().setValue(localisation);
+	}
+	
+	
 
 	
 	
