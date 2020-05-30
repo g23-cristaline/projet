@@ -51,11 +51,9 @@ public class DaoResponsable {
 	        else 
 	        	code="EXT"+code;
 			// Insère le responsable
-			sql = "INSERT INTO responsable ( idcategorie, nom_complet, adresse,permis_conduire,brevet_secourisme,code,telephone,info_supplementaires,date_naissance ) VALUES ( ?, ?, ?,?,?,?,?,?,? )";
+		
 			sql2= "INSERT INTO responsable ( idcategorie, nom_complet, adresse,permis_conduire,brevet_secourisme,code,telephone,info_supplementaires,date_naissance,numero_permi,date_permis,lieu_permis ) VALUES ( ?, ?, ?,?,?,?,?,?,?,?,?,? )";
-			if(responsable.getCategorie().getId()!=1)
-				stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
-			else
+			
 				stmt = cn.prepareStatement(sql2,Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(	1, responsable.getCategorie().getId() );
 			stmt.setString(	2, responsable.getNom_complet() );
@@ -66,12 +64,10 @@ public class DaoResponsable {
 			stmt.setString(	7, responsable.getTelephone() );
 			stmt.setString(	8, responsable.getInfo_supplementaires() );
 			stmt.setObject(9, responsable.getDate_naissance());
-			if(responsable.getCategorie().getId()==1)
-			{
+		
 				stmt.setString(10,responsable.getNumero_permis());
 				stmt.setObject(11,responsable.getDate_permis());
 				stmt.setString(12, responsable.getLieu_permis());
-			}
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
