@@ -34,8 +34,17 @@ public enum EnumView implements IEnumView {
 	ResponsableForm  	("responsable/ViewResponsableForm.fxml"),
 	ResponsableList  ("responsable/ViewResponsableListe.fxml"),
 	
+	
+	
+	
+	
+	
+	
+	
 	DetailParticipant ("test/ViewTestDaoParticipant.fxml"),
 	DetailParticipantModifiable ("test/ViewTestDaoParticipantmodifiable.fxml"),
+	ListeEquipeAttente ("equipe/ViewDaoEquipeListe.fxml"),
+	DetailEquipe ("equipe/ViewDaoEquipeDetail.fxml"),
 
 	;
 

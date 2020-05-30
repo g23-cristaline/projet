@@ -70,8 +70,15 @@ public class ControllerConnexion {
 	private void creer_identifiant() {
 		Platform.runLater(() ->{
 
+			
+			
+			
+			
+			
+			
+			
 //			managerGui.showView(EnumView.NewIdentifiant);
-			managerGui.showView(EnumView.ListeParticipant);
+//			managerGui.showView(EnumView.ListeEquipeAttente);
 
 	//	managerGui.showView(EnumView.MissionListe);
 		});

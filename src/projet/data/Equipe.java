@@ -116,6 +116,11 @@ public class Equipe {
 	public final void setPaye(final Boolean paye) {
 		this.payeProperty().setValue(paye);
 	}
+
+	@Override
+	public String toString() {
+		return  nom.get() ;
+	}
 	
 
 }

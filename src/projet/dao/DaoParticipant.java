@@ -94,7 +94,7 @@ public class DaoParticipant {
 		}
 	}
 	
-	private Participant construireParticipant( ResultSet rs ) throws SQLException {
+	public Participant construireParticipant( ResultSet rs ) throws SQLException {
 
 		Participant participant = new Participant();
 		participant.setId(rs.getObject( "id", Integer.class ));
