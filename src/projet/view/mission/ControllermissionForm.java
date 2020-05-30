@@ -56,7 +56,7 @@ public class ControllermissionForm {
 	private IManagerGui			managerGui;
 	@Inject
 	private ModelMission		modelMission;
-
+	
 	
 	// Initialisation du Controller
 	
@@ -68,7 +68,7 @@ public class ControllermissionForm {
 		
 
 		// Data binding
-		courant = modelMission.getCourant();
+		
 		textFieldId.textProperty().bindBidirectional( courant.idProperty(), new ConverterStringInteger());
 		textFieldNomMission.textProperty().bindBidirectional( courant.nom_missionProperty() );
 		//textFieldLocalisation.textProperty().bindBidirectional( courant.localisationProperty() );
@@ -76,7 +76,7 @@ public class ControllermissionForm {
 		localisation.setItems(modelMission.getListlocal());
 		
 		//courant.horaireProperty().bindBidirectional(textFieldHoraire.textProperty(),new ConverterStringLocalDate();
-		textFieldHoraire.setText(courant.getHoraire().toString());
+		//textFieldHoraire.setText(courant.getHoraire().toString());
 		
 		recuptype();
         recuplocal();

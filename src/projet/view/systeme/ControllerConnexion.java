@@ -71,7 +71,7 @@ public class ControllerConnexion {
 		Platform.runLater(() ->{
 
 //			managerGui.showView(EnumView.NewIdentifiant);
-			managerGui.showView(EnumView.ListeParticipant);
+			managerGui.showView(EnumView.AttributionMission);
 
 	//	managerGui.showView(EnumView.MissionListe);
 		});
