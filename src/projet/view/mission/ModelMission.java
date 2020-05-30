@@ -2,6 +2,7 @@ package projet.view.mission;
 
 import javax.inject.Inject;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import jfox.commun.exception.ExceptionValidation;
@@ -9,10 +10,12 @@ import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoLocalisation;
 import projet.dao.DaoMission;
+import projet.dao.DaoResponsable;
 import projet.data.Compte;
 import projet.data.Localisation;
 import projet.data.Memo;
 import projet.data.Mission;
+import projet.data.Responsable;
 
 public class ModelMission {
 
@@ -23,6 +26,8 @@ public class ModelMission {
 	private final ObservableList<Mission> liste = FXCollections.observableArrayList(); 
 	private final ObservableList<String> type = FXCollections.observableArrayList("m1","m2");
 	private final ObservableList<Localisation> listlocal = FXCollections.observableArrayList();
+	private final ObservableList<Responsable> listResponsable = FXCollections.observableArrayList();
+	
 	
 	
 	
@@ -36,6 +41,8 @@ public class ModelMission {
 	private DaoMission		daoMission;
     @Inject 
     private DaoLocalisation  daoLocalisation;
+    @Inject
+    private DaoResponsable   daoResponsable;
 
 	// Getters
 	
@@ -57,6 +64,9 @@ public class ModelMission {
 		return listlocal;
 	}
 	
+	public ObservableList<Responsable> getListResponsable(){
+		return listResponsable;
+	}
 	
 	// Actualisations
 	
@@ -65,6 +75,7 @@ public class ModelMission {
 	public void actualiserListe() {
 		liste.setAll( daoMission.listerTout() );
 		listlocal.setAll(daoLocalisation.listerTout());
+		listResponsable.setAll(daoResponsable.listerTout());
  	}
 	
 	
@@ -126,6 +137,14 @@ public class ModelMission {
 			mapper.update( courant, UtilFX.findNext( liste, item ) );
 		}
 
+
+		public void detail( Mission item ) {
+			daoMission.supprimer( item.getId() );
+			mapper.update( courant, UtilFX.findNext( liste, item ) );
+		}
 	
+		public void Attribuer_Mission(Mission m ,Responsable p) {
+			daoMission.AttribuerMission(m, p);
+		}
 
 }

@@ -33,6 +33,7 @@ public enum EnumView implements IEnumView {
 	MissionForm			( "mission/ViewmissionForm.fxml" ),
 	ResponsableForm  	("responsable/ViewResponsableForm.fxml"),
 	ResponsableList  ("responsable/ViewResponsableListe.fxml"),
+<<<<<<< HEAD
 	
 	
 	
@@ -41,10 +42,17 @@ public enum EnumView implements IEnumView {
 	
 	
 	
+=======
+	DétailMission    ("mission/ViewDetailMission.fxml"),
+>>>>>>> branch 'master' of https://github.com/g23-cristaline/projet.git
 	DetailParticipant ("test/ViewTestDaoParticipant.fxml"),
 	DetailParticipantModifiable ("test/ViewTestDaoParticipantmodifiable.fxml"),
+<<<<<<< HEAD
 	ListeEquipeAttente ("equipe/ViewDaoEquipeListe.fxml"),
 	DetailEquipe ("equipe/ViewDaoEquipeDetail.fxml"),
+=======
+	AttributionMission("mission/ViewAttributionMission.fxml"),
+>>>>>>> branch 'master' of https://github.com/g23-cristaline/projet.git
 
 	;
 

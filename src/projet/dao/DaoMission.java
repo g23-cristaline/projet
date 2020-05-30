@@ -139,6 +139,33 @@ public class DaoMission {
 			}
 		}
 
+		public void AttribuerMission(Mission m, Responsable p) {
+			
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String				sql;
+			
+			try {
+				cn = dataSource.getConnection();
+				
+				sql = "INSERT INTO executer(id,id_Mission) VALUES (?,?)";
+				stmt = cn.prepareStatement( sql );
+				//stmt.setInt(1, mission.getId() );
+				stmt.setInt(1, p.getId());
+				stmt.setObject(	2, m.getId());
+				stmt.executeUpdate();
+
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( stmt, cn );
+			}		
+			
+			
+		}
    
 		public List<Mission> listerTout()   {
 

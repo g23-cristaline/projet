@@ -78,7 +78,11 @@ public class ControllerConnexion {
 			
 			
 //			managerGui.showView(EnumView.NewIdentifiant);
+<<<<<<< HEAD
 //			managerGui.showView(EnumView.ListeEquipeAttente);
+=======
+			managerGui.showView(EnumView.AttributionMission);
+>>>>>>> branch 'master' of https://github.com/g23-cristaline/projet.git
 
 	//	managerGui.showView(EnumView.MissionListe);
 		});

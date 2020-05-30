@@ -29,6 +29,8 @@ public class ControllerMissionListe {
 	@FXML
 	private Button				buttonValider;
 	@FXML
+	private Button				buttondetail;
+	@FXML
 	private ListView			listvieww;
     
 
@@ -39,13 +41,17 @@ public class ControllerMissionListe {
 	private IManagerGui			managerGui;
 	@Inject
 	private ModelMission		modelMission;
-	
+	@Inject
+	private Mission courant;
+	@Inject
+	private détail		detail;
+
 	//Initialize
 	
 	@FXML
 	public void initialize() {
 		
-		//courant = modelMission.getCourant();
+		courant = modelMission.getCourant();
 		modelMission.actualiserListe();
 		listvieww.setItems(modelMission.getListe());
 		
@@ -101,7 +107,9 @@ public class ControllerMissionListe {
 					if ( listvieww.getSelectionModel().getSelectedIndex() == -1 ) {
 						managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 					} else {
-						doModifier();
+						courant=(Mission) listvieww.getSelectionModel().getSelectedItem();
+						 modelMission.setCourant(courant);
+						managerGui.showView( EnumView.DétailMission);
 					}
 				}
 			}
