@@ -19,7 +19,7 @@
                   <Insets top="20.0" />
                </padding>
             </Label>
-            <ListView fx:id="listeview" prefHeight="200.0" prefWidth="504.0">
+            <ListView fx:id="listeview" onMouseClicked="#gererClicSurListe" prefHeight="200.0" prefWidth="504.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
