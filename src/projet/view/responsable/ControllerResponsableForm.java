@@ -74,6 +74,7 @@ public class ControllerResponsableForm {
 	   int statut1 = brevet_secourisme.getToggles().indexOf(bouton1);
 	    courant.setBrevet_secourisme(statut1==0);
 	    if(statut==1) {
+	    	
 	    	num_permis.setDisable(true);
 	    	date_permis.setDisable(true);
 	    	lieu_permis.setDisable(true);

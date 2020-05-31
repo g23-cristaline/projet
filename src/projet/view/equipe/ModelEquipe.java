@@ -35,10 +35,6 @@ public class ModelEquipe {
 		return daoequipeattente;
 	}
 
-	public void setDaoEquipeAttente(DaoEquipeAttente daoequipeattente) {
-		this.daoequipeattente = daoequipeattente;
-	}
-
 	public ObservableList<Equipe> getListeequipe() {
 		return listeequipe;
 	}

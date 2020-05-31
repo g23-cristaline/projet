@@ -78,14 +78,14 @@ public class DaoEquipeAttente {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM participant_attente where id=?"; 
+			sql = "SELECT * FROM participant_attente where id_equipe_attente=?"; 
 			stmt = cn.prepareStatement(sql);
 			stmt.setObject( 1, idEquipe);
 			rs = stmt.executeQuery();
 			
 			List<Participant> participant = new ArrayList<>();
 			while (rs.next()) {
-				participant.add( daoparticipantattente.retrouver(rs.getInt("id_Equipe_attente")) );
+				participant.add( daoparticipantattente.retrouver(rs.getInt("id")) );
 				
 			}
 			

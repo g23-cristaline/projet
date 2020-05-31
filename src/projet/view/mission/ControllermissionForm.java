@@ -71,15 +71,15 @@ public class ControllermissionForm {
 		
 		textFieldId.textProperty().bindBidirectional( courant.idProperty(), new ConverterStringInteger());
 		textFieldNomMission.textProperty().bindBidirectional( courant.nom_missionProperty() );
-		//textFieldLocalisation.textProperty().bindBidirectional( courant.localisationProperty() );
 		listviewType.setItems(modelMission.getType());
 		localisation.setItems(modelMission.getListlocal());
-		
-		//courant.horaireProperty().bindBidirectional(textFieldHoraire.textProperty(),new ConverterStringLocalDate();
-		//textFieldHoraire.setText(courant.getHoraire().toString());
-		
-		recuptype();
-        recuplocal();
+		localisation.valueProperty().bindBidirectional( courant.localisationProperty() );
+		textFieldHoraire.setText(courant.getHoraire().format(DateTimeFormatter.ISO_TIME));
+		courant.horaireProperty().addListener(observable ->{
+			textFieldHoraire.setText(courant.getHoraire().format( DateTimeFormatter.ISO_TIME));
+		});
+		listviewType.valueProperty().bindBidirectional(courant.typeProperty());
+
 	}
 	
 	// Actions
@@ -93,9 +93,7 @@ public class ControllermissionForm {
 		private void doValider() {
 			try {
 				courant.setHoraire(LocalTime.parse(textFieldHoraire.getText(), DateTimeFormatter.ISO_TIME));
-				modelMission.validerMiseAJour();
-				modelMission.actualiserListe();
-				managerGui.showView( EnumView.MissionListe );
+
 				
 			}catch(Exception E) {
 				
@@ -105,18 +103,22 @@ public class ControllermissionForm {
 				erreur.setContentText("L'horaire n'est pas dans le bon format");
 				erreur.showAndWait();
 			}
+			modelMission.validerMiseAJour();
+			modelMission.actualiserListe();
+			managerGui.showView( EnumView.MissionListe );
 			
 			
 		}
 
 		@FXML
 		private void recuptype() {
-			listviewType.getSelectionModel().selectedIndexProperty().addListener(observable->{courant.setType((String) listviewType.getSelectionModel().getSelectedItem());});
+			listviewType.valueProperty().addListener(observable->{courant.setType(listviewType.getValue());});
 		}
 		
 		@FXML
 		private void recuplocal() {
-			localisation.getSelectionModel().selectedIndexProperty().addListener(observable->{courant.setLocalisation( (Localisation) localisation.getSelectionModel().getSelectedItem());});
+			localisation.valueProperty().addListener(observable->{courant.setLocalisation(localisation.getValue());
+		});
 		}
 		
         
