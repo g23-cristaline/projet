@@ -54,11 +54,6 @@ public class ControllerDaoListeAttente {
 			
 		}
 	
-	
-	
-	
-	
-	
 	}
 
 	public Participant getCourant() {

@@ -150,11 +150,12 @@ public class DaoMission {
 			try {
 				cn = dataSource.getConnection();
 				
-				sql = "INSERT INTO executer(id,id_Mission) VALUES (?,?)";
+				sql = "INSERT INTO executer(id,id_Mission,type) VALUES (?,?,?)";
 				stmt = cn.prepareStatement( sql );
 				//stmt.setInt(1, mission.getId() );
 				stmt.setInt(1, p.getId());
 				stmt.setObject(	2, m.getId());
+				stmt.setObject(3, m.getType());
 				stmt.executeUpdate();
 
 

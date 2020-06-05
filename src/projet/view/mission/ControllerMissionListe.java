@@ -41,9 +41,8 @@ public class ControllerMissionListe {
 	private IManagerGui			managerGui;
 	@Inject
 	private ModelMission		modelMission;
-	@Inject
 	private Mission courant;
-	@Inject
+	
 	private détail		detail;
 
 	//Initialize
@@ -63,6 +62,8 @@ public class ControllerMissionListe {
 		});
 		configurerBoutons();
 	
+		
+	
 	}
 	
 	private void refresh() {
@@ -81,8 +82,8 @@ public class ControllerMissionListe {
 
 		@FXML
 		private void doModifier() {
-			recuphoraire();
 			modelMission.preparerModifier((Mission) listvieww.getSelectionModel().getSelectedItem());
+			System.out.println(modelMission.getCourant());
 			managerGui.showView( EnumView.MissionForm );
 			
 		}
@@ -129,7 +130,8 @@ public class ControllerMissionListe {
 
 		@FXML
 		private void recuphoraire() {
-			listvieww.getSelectionModel().selectedIndexProperty().addListener(observable->{modelMission.setCourant((Mission) listvieww.getSelectionModel().getSelectedItem());});
+			listvieww.getSelectionModel().selectedIndexProperty().addListener(observable->{modelMission.setCourant((Mission) listvieww.getSelectionModel().getSelectedItem());
+			System.out.println(modelMission.getCourant());});
 		}
 		
 

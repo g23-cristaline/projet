@@ -1,7 +1,10 @@
 package projet.view.mission;
 
+import java.sql.SQLException;
+
 import javax.inject.Inject;
 
+import org.postgresql.util.PSQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,7 +35,7 @@ public class ModelMission {
 	
 	
 	private  Mission	courant = new Mission();
-	
+	private Responsable respCourant = new Responsable();
 	 
 	// Autres champs
     @Inject
@@ -82,6 +85,12 @@ public class ModelMission {
 	
 	// Actions
 	
+	public Responsable getRespCourant() {
+		return respCourant;
+	}
+	public void setRespCourant(Responsable respCourant) {
+		this.respCourant = respCourant;
+	}
 	public void preparerAjouter() {
 		
 		mapper.update( courant, new Mission() );
@@ -143,7 +152,7 @@ public class ModelMission {
 			mapper.update( courant, UtilFX.findNext( liste, item ) );
 		}
 	
-		public void Attribuer_Mission(Mission m ,Responsable p) {
+		public void Attribuer_Mission(Mission m ,Responsable p) throws SQLException{
 			daoMission.AttribuerMission(m, p);
 		}
 

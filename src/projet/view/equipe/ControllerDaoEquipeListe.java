@@ -2,6 +2,8 @@ package projet.view.equipe;
 
 import javax.inject.Inject;
 
+import org.eclipse.jdt.internal.compiler.ast.MagicLiteral;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -43,10 +45,16 @@ public class ControllerDaoEquipeListe {
 				
 				
 				 else {
-					 courant=(Equipe) listeview.getSelectionModel().getSelectedItem();
-					 modelequipe.setEquipe(courant);
-					 modelequipe.retrouver(courant);
-					managerGui.showView( EnumView.DetailEquipe );
+					 try {
+						 courant=(Equipe) listeview.getSelectionModel().getSelectedItem();
+						 System.out.println(courant);
+						 modelequipe.setEquipe(courant);
+						 modelequipe.retrouver(courant);
+						managerGui.showView( EnumView.DetailEquipe );
+					 }catch(Exception e) {
+						 managerGui.showDialogError("Aucun participant ou un seul;\n Une équipe doit avoir deux participants");
+					 }
+
 					
 				}
 				

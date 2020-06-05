@@ -1,9 +1,12 @@
 package projet.view.mission;
 
+
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.inject.Inject;
+
+import org.postgresql.util.PSQLException;
 
 import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
@@ -59,30 +62,32 @@ public class AttributionMission {
 	
 	@FXML
 	private void initialize() {
-	miss = new Mission();
-	resp = new Responsable();
 	Modelmission.actualiserListe();
+	miss = Modelmission.getCourant();
+	resp = Modelmission.getRespCourant();
 	mission.setItems( Modelmission.getListe());
 	responsable.setItems(Modelmission.getListResponsable());
-	responsable.getSelectionModel().selectedIndexProperty().addListener(observable->{
-		System.out.println(resp);
+	responsable.valueProperty().addListener(observable->{
 		resp = responsable.getSelectionModel().getSelectedItem();
-		if(resp.getPermis_conduire()==true) {
+		if(resp.getPermis_conduire()) {
 			permisconduire.setSelected(true);
 		}else {
 			permisconduire.setSelected(false);
 		}
+		
 		Brevet.setSelected(resp.getBrevet_secourisme()?true:false);
+		 preferences.setText(resp.getInfo_supplementaires());
 			});
 	
-	type.textProperty().bindBidirectional(miss.typeProperty());
 	
-	 mission.getSelectionModel().selectedIndexProperty().addListener(observable->{
+	
+	 mission.valueProperty().addListener(observable->{
 		 	 miss= mission.getSelectionModel().getSelectedItem();
-		 horaire.setText(miss.getHoraire().toString());
+		 horaire.setText(miss.getHoraire().format(DateTimeFormatter.ISO_TIME));
+		 System.out.println(miss.getType());
+		 type.setText(miss.getType());
 		 localisation.textProperty().bindBidirectional(miss.getLocalisation().positionProperty());}
 	 );
-	 preferences.textProperty().bindBidirectional(resp.info_supplementairesProperty());
 	
 	 
 	}
@@ -98,13 +103,17 @@ public class AttributionMission {
 			private void doValider() {
 				try {
 					Modelmission.Attribuer_Mission(miss, resp);
+					Alert reuissi = new Alert(AlertType.INFORMATION);
+					reuissi.setTitle("Information");
+					reuissi.setHeaderText(null);
+					reuissi.setContentText("La mission a bien été attribué");
+					reuissi.showAndWait();
 					
-				}catch(Exception E) {
-					
+				}catch(Exception e) {
 					Alert erreur = new Alert(AlertType.WARNING);
 					erreur.setTitle("warning");
 					erreur.setHeaderText(null);
-					erreur.setContentText("Pas réussi");
+					erreur.setContentText("Ce responsable est déja en charge de cette mission");
 					erreur.showAndWait();
 				}
 				
