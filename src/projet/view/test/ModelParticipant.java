@@ -48,7 +48,12 @@ public class ModelParticipant {
 	public void suppression() {
 		daoparticipant.supprimer(participant.getId());
 	}
+	public void validerMiseAJour() {
+
+		
+		}
 	public void modifier() {
+		
 		daoparticipant.modifier(participant);
 	}
 

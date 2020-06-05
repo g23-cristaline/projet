@@ -21,6 +21,7 @@ public class DaoEquipeAttente {
 	@Inject
 	DaoParticipantAttente daoparticipantattente;
 	
+		
 	
 	
 	public List<Equipe> listerTout()   {
@@ -96,6 +97,60 @@ public class DaoEquipeAttente {
 		} finally {
 			UtilJdbc.close( rs, stmt, cn );
 		}
+	}
+	
+	public Equipe retrouverEquipe (int idEquipe){
+		
+		 Equipe equipe=new Equipe();
+		
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM equipe_attente where id=?"; 
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject( 1, idEquipe);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				
+				equipe=construireEquipe(rs);
+				
+				
+			}
+			return equipe;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+		
+		
+	
+	}
+	
+	public void Supprimer(int id) {
+		 
+			
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+
+				sql = "DELETE  FROM equipe_attente where id=?"; 
+				stmt = cn.prepareStatement(sql);
+				stmt.setObject( 1, id);
+				 stmt.executeUpdate();
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( stmt, cn );
+			}
 	}
 
 }
