@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,8 +23,9 @@ public class DaoMission {
 	@Inject
 	DataSource dataSource;
 	@Inject 
-	
 	DaoLocalisation daolocalisation;
+	@Inject
+	DaoResponsable  daoresponsable;
 
 	
 	// Actions
@@ -167,6 +169,34 @@ public class DaoMission {
 			
 			
 		}
+		
+		public HashMap<Responsable,Mission> MissionsAttribuees() {
+			
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String				sql;
+			
+			try {
+				cn = dataSource.getConnection();
+				
+				sql = "SELECT * FROM executer ORDER BY id_Mission";
+				stmt = cn.prepareStatement(sql);
+				rs = stmt.executeQuery();
+				
+				HashMap<Responsable,Mission> MissionsAttribuees  = new HashMap<Responsable,Mission>();
+				while(rs.next()) {
+					 MissionsAttribuees.put(daoresponsable.construireResponsable(rs), construireMission(rs));
+				}
+				return MissionsAttribuees;
+			} catch(SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+			}
+		
    
 		public List<Mission> listerTout()   {
 
@@ -207,6 +237,8 @@ public class DaoMission {
 			mission.setType(rs.getObject("typem",String.class));
 			return mission;
 		}
+		
+		
 
 
 	

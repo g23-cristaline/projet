@@ -8,6 +8,7 @@ import org.postgresql.util.PSQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
@@ -30,7 +31,7 @@ public class ModelMission {
 	private final ObservableList<String> type = FXCollections.observableArrayList("m1","m2");
 	private final ObservableList<Localisation> listlocal = FXCollections.observableArrayList();
 	private final ObservableList<Responsable> listResponsable = FXCollections.observableArrayList();
-	//private final ObservableList<AttributionMission> Atm = FXCollections.observableArrayList();
+	private final ObservableMap<Responsable,Mission> Atm = FXCollections.observableHashMap();
 	
 	
 	
@@ -70,9 +71,9 @@ public class ModelMission {
 	public ObservableList<Responsable> getListResponsable(){
 		return listResponsable;
 	}
-//	public ObservableList<AttributionMission> getAtm(){
-//		return Atm;
-//	}
+	public ObservableMap<Responsable,Mission> getAtm(){
+	return Atm;
+	}
 	
 	// Actualisations
 	
@@ -82,7 +83,7 @@ public class ModelMission {
 		liste.setAll( daoMission.listerTout() );
 		listlocal.setAll(daoLocalisation.listerTout());
 		listResponsable.setAll(daoResponsable.listerTout());
-		//Atm.setAll(daoMission.listerTout());
+		Atm.putAll(daoMission.MissionsAttribuees());
  	}
 	
 	
@@ -145,5 +146,7 @@ public class ModelMission {
 		public void Attribuer_Mission(Mission m ,Responsable p) throws SQLException{
 			daoMission.AttribuerMission(m, p);
 		}
+		
+	
 
 }

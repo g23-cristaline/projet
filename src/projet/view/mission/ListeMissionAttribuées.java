@@ -4,8 +4,11 @@ import javax.inject.Inject;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import jfox.javafx.view.IManagerGui;
+import projet.data.Mission;
+import projet.data.Responsable;
 
 public class ListeMissionAttribuées {
 	
@@ -13,6 +16,10 @@ public class ListeMissionAttribuées {
 	
 	@FXML
 	private TableView           tableview;
+	@FXML
+	private TableColumn<Mission,String>  missions;
+	@FXML
+	private TableColumn<Responsable,String>  responsable;
 	@FXML
 	private Button				buttonModifier;
 	@FXML
