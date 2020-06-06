@@ -8,6 +8,7 @@ import projet.commun.IMapper;
 import projet.dao.DaoCategorie;
 import projet.dao.DaoResponsable;
 import projet.dao.DaoRole;
+import projet.dao.DaoUtilisateur;
 import projet.data.Categorie;
 import projet.data.Responsable;
 
@@ -16,6 +17,8 @@ public class ModelResponsable {
 	DaoResponsable daoresponsable;
 	@Inject
 	DaoRole daorole;
+	@Inject
+	DaoUtilisateur daoutilisateur;
 	@Inject 
 	DaoCategorie daocategorie;
 	@Inject
@@ -24,6 +27,7 @@ public class ModelResponsable {
 	private final ObservableList<Responsable> membres= FXCollections.observableArrayList();
 	private final ObservableList<Responsable> externes= FXCollections.observableArrayList();
 	private final ObservableList<Categorie> categorie= FXCollections.observableArrayList();
+	private Responsable courant=new Responsable();
 	public void inserer(Responsable responsable) {
 		daoresponsable.inserer(responsable,"membre");
 	}
@@ -37,7 +41,18 @@ public class ModelResponsable {
 	public void preparerAjouter(Responsable courant) {
 		mapper.update(courant, new Responsable());
 	}
+	
 
+	public Responsable getCourant() {
+		return courant;
+	}
+	public void preparerModifier(Responsable item) {
+		mapper.update(courant, daoresponsable.retrouver( item.getId() ));
+	}
+
+	public void setCourant(Responsable courant) {
+		this.courant = courant;
+	}
 
 	public ObservableList<Categorie> getCategorie() {
 		return categorie;
@@ -55,6 +70,12 @@ public class ModelResponsable {
 
 	public ObservableList<Responsable> getExternes() {
 		return externes;
+	}
+	public String getMail() {
+	return	daoutilisateur.retrouver(daoresponsable.retrouver(courant.getId()).getId()).getMail();
+	}
+	public String getMail(Responsable resp) {
+		return	daoutilisateur.retrouver(daoresponsable.retrouver(resp.getId()).getId()).getMail();
 	}
 	
 	

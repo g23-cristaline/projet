@@ -57,6 +57,7 @@ public class ModelEquipe {
 		participantcourant=(ArrayList<Participant>) daoequipeattente.retrouverParticipantAttente(equipe.getId());
 		
 	}
+	
 
 	public ArrayList<Participant> getParticipantcourant() {
 		return participantcourant;
@@ -66,7 +67,6 @@ public class ModelEquipe {
 		this.participantcourant = participantcourant;
 	}
 	
-
 	
 	
 
