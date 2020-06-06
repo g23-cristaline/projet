@@ -74,7 +74,9 @@ public class ControllermissionForm {
 		listviewType.setItems(modelMission.getType());
 		localisation.setItems(modelMission.getListlocal());
 		localisation.valueProperty().bindBidirectional( courant.localisationProperty() );
-		textFieldHoraire.setText(courant.getHoraire().format(DateTimeFormatter.ISO_TIME));
+		System.out.println(courant);
+		if(courant==null)
+			textFieldHoraire.setText(courant.getHoraire().format(DateTimeFormatter.ISO_TIME));
 		courant.horaireProperty().addListener(observable ->{
 			textFieldHoraire.setText(courant.getHoraire().format( DateTimeFormatter.ISO_TIME));
 		});

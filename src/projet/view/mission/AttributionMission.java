@@ -103,6 +103,7 @@ public class AttributionMission {
 			private void doValider() {
 				try {
 					Modelmission.Attribuer_Mission(miss, resp);
+					managerGui.showView(EnumView.MissionAttribuees);
 					Alert reuissi = new Alert(AlertType.INFORMATION);
 					reuissi.setTitle("Information");
 					reuissi.setHeaderText(null);

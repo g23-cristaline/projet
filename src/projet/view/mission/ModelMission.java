@@ -8,6 +8,7 @@ import org.postgresql.util.PSQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
@@ -30,7 +31,7 @@ public class ModelMission {
 	private final ObservableList<String> type = FXCollections.observableArrayList("m1","m2");
 	private final ObservableList<Localisation> listlocal = FXCollections.observableArrayList();
 	private final ObservableList<Responsable> listResponsable = FXCollections.observableArrayList();
-	
+	private final ObservableMap<Responsable,Mission> Atm = FXCollections.observableHashMap();
 	
 	
 	
@@ -70,6 +71,9 @@ public class ModelMission {
 	public ObservableList<Responsable> getListResponsable(){
 		return listResponsable;
 	}
+	public ObservableMap<Responsable,Mission> getAtm(){
+	return Atm;
+	}
 	
 	// Actualisations
 	
@@ -79,6 +83,7 @@ public class ModelMission {
 		liste.setAll( daoMission.listerTout() );
 		listlocal.setAll(daoLocalisation.listerTout());
 		listResponsable.setAll(daoResponsable.listerTout());
+		Atm.putAll(daoMission.MissionsAttribuees());
  	}
 	
 	
@@ -115,21 +120,7 @@ public class ModelMission {
 			message.append( "\nLe nom de la mission est trop long : 25 lettres maximum." );
 		} 
 		
-//		if( courant.getLocalisation() == null || courant.getLocalisation().isEmpty() ) {
-//			message.append( "\nLa localisation ne doit pas être vide." );
-//		} else  if ( courant.getLocalisation().length()< 3 ) {
-//			message.append( "\nLa localisation est trop courte : 3 lettres minimum." );
-//		} else  if ( courant.getLocalisation().length()> 25 ) {
-//			message.append( "\nLa localisation est trop longue : 25 lettres maximum." );
-//		}
-		
-//		if( courant.getType() == null || courant.getType().isEmpty() ) {
-//			message.append( "\nLe type ne doit pas être vide." );
-//		} else  if ( courant.getType().length()> 100 ) {
-//			message.append( "\nL'adresse e-mail est trop longue : 100 maxi." );
-//		}
-//		
-		
+	
 		// Effectue la mise à jour
 		
 		if ( courant.getId() == null ) {
@@ -155,5 +146,7 @@ public class ModelMission {
 		public void Attribuer_Mission(Mission m ,Responsable p) throws SQLException{
 			daoMission.AttribuerMission(m, p);
 		}
+		
+	
 
 }

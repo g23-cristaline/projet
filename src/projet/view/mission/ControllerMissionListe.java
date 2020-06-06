@@ -29,8 +29,6 @@ public class ControllerMissionListe {
 	@FXML
 	private Button				buttonValider;
 	@FXML
-	private Button				buttondetail;
-	@FXML
 	private ListView			listvieww;
     
 

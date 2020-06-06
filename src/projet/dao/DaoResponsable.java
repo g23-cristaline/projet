@@ -232,7 +232,7 @@ public class DaoResponsable {
 	
 	// Méthodes auxiliaires
 	
-	private Responsable construireResponsable( ResultSet rs) throws SQLException {
+	public Responsable construireResponsable( ResultSet rs) throws SQLException {
 
 		Responsable responsable = new Responsable();
 		responsable.setId(rs.getObject( "id", Integer.class ));
