@@ -26,6 +26,7 @@ public class ControllerDaoEquipeDetail {
 	ModelParticipant modelparticipant;
 	
 	
+	
 	// Composants visuales
 	
 	
@@ -87,18 +88,22 @@ public class ControllerDaoEquipeDetail {
 	
 	@FXML
 	private void doSupprimer() {
-		modelequipe.suppression();
+		modelequipe.supprimer();
 		modelequipe.actualiser();
-		managergui.showView( EnumView.ListeParticipant );
+		managergui.showView( EnumView.ListeEquipeAttente );
+
+
 		
 	}
 	@FXML
 	private void doValider() {
 		
-		modelequipe.modifier();
-		modelequipe.actualiser();
 		
-		managergui.showView( EnumView.ListeParticipant );
+	 modelequipe.Inserer();
+	 modelequipe.supprimer();
+	 managergui.showView( EnumView.ListeEquipeAttente );
+	 
+		
 	}
 	
 	

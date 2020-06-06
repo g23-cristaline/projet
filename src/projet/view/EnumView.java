@@ -33,16 +33,25 @@ public enum EnumView implements IEnumView {
 	MissionForm			( "mission/ViewmissionForm.fxml" ),
 	ResponsableForm  	("responsable/ViewResponsableForm.fxml"),
 	ResponsableList  ("responsable/ViewResponsableListe.fxml"),
+
 	DétailMission    ("mission/ViewDetailMission.fxml"),
+
 	DetailParticipant ("test/ViewTestDaoParticipant.fxml"),
 	DetailParticipantModifiable ("test/ViewTestDaoParticipantmodifiable.fxml"),
+	MissionAttribuees("mission/ViewMissionAttribuée.fxml"),
+
+
 	ListeEquipeAttente ("equipe/ViewDaoEquipeListe.fxml"),
 	DetailEquipe ("equipe/ViewDaoEquipeDetail.fxml"),
+
+
 	AttributionMission("mission/ViewAttributionMission.fxml"),
-	MissionAttribuees("mission/ViewMissionAttribuée.fxml"),
 	Mail				( "mail/ViewMail.fxml" ),
 	ResponsableDetails ("responsable/ViewResponsableDetail.fxml"),
 	MailDiffusion ("mail/ViewDiffusion.fxml"),
+
+
+
 	;
 
 	

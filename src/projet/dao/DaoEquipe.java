@@ -69,5 +69,39 @@ public class DaoEquipe {
 		
 		
 	}
+	public int inserer(Equipe eq) {
+		 int t=0;
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+			sql= "INSERT INTO equipe ( nom, categorie,nombre_repas, valide, paye) values(?,?,?,?,?)  ";
+			stmt = cn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			stmt.setObject(	1, eq.getNom() );
+			stmt.setObject(2,eq.getCategorie());
+			stmt.setInt(3, eq.getNombre_repas() );
+			stmt.setBoolean(4, eq.getValide());
+			stmt.setBoolean(5, eq.getPaye());
+			
+			 stmt.executeUpdate();
+			 rs=stmt.getGeneratedKeys();
+			
+			while (rs.next()) {
+				
+				t=rs.getInt(1);
+				
+			}
+			return t;
+			
+
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( stmt, cn );
+		}
+	}
 	
 }

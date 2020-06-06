@@ -6,8 +6,10 @@ import javax.inject.Inject;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import projet.dao.DaoEquipe;
 import projet.dao.DaoEquipeAttente;
 import projet.dao.DaoParticipant;
+import projet.dao.DaoParticipantAttente;
 import projet.data.Equipe;
 import projet.data.Mission;
 import projet.data.Participant;
@@ -17,7 +19,14 @@ public class ModelEquipe {
 	
 	@Inject 
 	DaoEquipeAttente  daoequipeattente;
+	@Inject
+	DaoEquipe daoequipe;
+	@Inject
+	DaoParticipant daoparticipant;
+	@Inject
+	DaoParticipantAttente daoparticipantattente;
 	
+	private int i=0;
 	private Equipe equipe;
 	private ArrayList<Participant> participantcourant=new ArrayList<Participant>();
 	
@@ -66,6 +75,28 @@ public class ModelEquipe {
 	public void setParticipantcourant(ArrayList<Participant> participantcourant) {
 		this.participantcourant = participantcourant;
 	}
+	public void Inserer() {
+		
+		
+		
+		i=daoequipe.inserer(equipe);
+		participantcourant.get(0).getEquipe().setId(i);
+		daoparticipant.inserer(participantcourant.get(0));
+		participantcourant.get(1).getEquipe().setId(i);
+		daoparticipant.inserer(participantcourant.get(1));
+		
+	
+		
+	
+	}
+	public void supprimer() {
+		daoparticipantattente.supprimer(participantcourant.get(0).getId());
+		daoparticipantattente.supprimer(participantcourant.get(1).getId());
+		
+		daoequipeattente.Supprimer(participantcourant.get(0).getEquipe().getId());
+		
+	}
+	
 	
 	
 	
