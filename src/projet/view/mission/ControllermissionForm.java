@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import javax.inject.Inject;
 
 import javafx.beans.property.Property;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -74,12 +75,14 @@ public class ControllermissionForm {
 		listviewType.setItems(modelMission.getType());
 		localisation.setItems(modelMission.getListlocal());
 		localisation.valueProperty().bindBidirectional( courant.localisationProperty() );
+		
 		System.out.println(courant);
-		if(courant==null)
+		if(courant!=null) {
 			textFieldHoraire.setText(courant.getHoraire().format(DateTimeFormatter.ISO_TIME));
 		courant.horaireProperty().addListener(observable ->{
 			textFieldHoraire.setText(courant.getHoraire().format( DateTimeFormatter.ISO_TIME));
 		});
+		}
 		listviewType.valueProperty().bindBidirectional(courant.typeProperty());
 
 	}

@@ -1,5 +1,12 @@
 package projet.view.equipe;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.inject.Inject;
 
 import javafx.fxml.FXML;
@@ -97,18 +104,93 @@ public class ControllerDaoEquipeDetail {
 	}
 	@FXML
 	private void doValider() {
-		
-		
 	 modelequipe.Inserer();
-	 modelequipe.supprimer();
-	 managergui.showView( EnumView.ListeEquipeAttente );
-	 
+	 modelequipe.actualiser();
+		managergui.showView( EnumView.ListeEquipeAttente );
+	}
+	@FXML
+	private void retour() {
+		managergui.showView(EnumView.ListeEquipeAttente);
+	}
+	@FXML
+	public void piece_identite() {
+		Path path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(0).getMail()+"-piece_identite.jpg");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(0).getMail()+"-piece_identite.pdf");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(0).getMail()+"-piece_identite.png");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(0).getMail()+"-piece_identite.gif");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(0).getMail()+"-piece_identite.jpeg");
+		File file= path.toFile();
 		
+		try {
+			Desktop.getDesktop().open(file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	public void certificat_medical() {
+		Path path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(0).getMail()+"-certificat_medical.pdf");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(0).getMail()+"-certificat_medical.jpg");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(0).getMail()+"-certificat_medical.png");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(0).getMail()+"-certificat_medical.gif");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(0).getMail()+"-certificat_medical.jpeg");
+		File file= path.toFile();
+		try {
+			Desktop.getDesktop().open(file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	
-	
-	
+	@FXML
+	public void piece_identite1() {
+		Path path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(1).getMail()+"-piece_identite.jpg");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(1).getMail()+"-piece_identite.pdf");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(1).getMail()+"-piece_identite.png");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(1).getMail()+"-piece_identite.gif");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(1).getMail()+"-piece_identite.jpeg");
+		File file= path.toFile();
+		
+		try {
+			Desktop.getDesktop().open(file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	public void certificat_medical1() {
+		Path path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(1).getMail()+"-certificat_medical.pdf");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(1).getMail()+"-certificat_medical.jpg");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(1).getMail()+"-certificat_medical.png");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(1).getMail()+"-certificat_medical.gif");
+		if(Files.notExists(path))
+			path=Paths.get("C:\\web\\partie web\\uploads\\"+modelequipe.getParticipantcourant().get(1).getMail()+"-certificat_medical.jpeg");
+		File file= path.toFile();
+		try {
+			Desktop.getDesktop().open(file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 }

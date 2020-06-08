@@ -1,59 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="paneRoot" prefHeight="402.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.systeme.ControllerIdentifiant">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.systeme.ControllerIdentifiant">
    <children>
-      <Label alignment="CENTER" styleClass="titre-vue" text="création de l'identifiant" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
-         <font>
-            <Font name="System Bold Italic" size="22.0" />
-         </font></Label>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="87.0" layoutY="154.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="60.0">
+      <AnchorPane layoutX="148.0" layoutY="26.0" prefHeight="348.0" prefWidth="304.0" style="-fx-background-color: #FFEFD5 #FFEFD5;">
          <children>
-            <GridPane prefHeight="150.0" prefWidth="350.0" vgap="15.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="128.0" />
-                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="196.0" minWidth="10.0" prefWidth="162.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label text="Code d'identification" />
-                  <TextField fx:id="code" prefHeight="25.0" prefWidth="156.0" GridPane.columnIndex="1" />
-                  <Label text="Login :" GridPane.rowIndex="1" />
-                  <TextField fx:id="login" prefHeight="25.0" prefWidth="157.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin></TextField>
-                  <Label text="Mot de passe :" GridPane.rowIndex="3" />
-                  <TextField fx:id="pass" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label text="Confirmation :" GridPane.rowIndex="4" />
-                  <TextField fx:id="confirmation" prefHeight="25.0" prefWidth="158.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label text="Email" GridPane.rowIndex="2" />
-                  <TextField fx:id="mail" prefHeight="25.0" prefWidth="158.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-               </children>
-            </GridPane>
+            <Label layoutX="101.0" layoutY="33.0" text="Créer votre compte" />
+            <JFXTextField fx:id="code" focusColor="#77b5fe" layoutX="56.0" layoutY="68.0" prefHeight="25.0" prefWidth="193.0" promptText="Code d'identification" />
+            <JFXTextField fx:id="login" focusColor="#77b5fe" layoutX="56.0" layoutY="99.0" prefHeight="25.0" prefWidth="193.0" promptText="Créer un login" />
+            <JFXTextField fx:id="mail" focusColor="#77b5fe" layoutX="56.0" layoutY="131.0" prefHeight="25.0" prefWidth="193.0" promptText="Email" />
+            <JFXPasswordField fx:id="pass" focusColor="#77b5fe" layoutX="56.0" layoutY="162.0" prefHeight="25.0" prefWidth="193.0" promptText="Créer un mot de pass" />
+            <JFXPasswordField fx:id="confirmation" focusColor="#77b5fe" layoutX="56.0" layoutY="195.0" prefHeight="25.0" prefWidth="193.0" promptText="Vérifier mot de pass" />
+            <JFXButton layoutX="56.0" layoutY="260.0" onAction="#creerId" prefHeight="25.0" prefWidth="193.0" style="-fx-background-color: #77b5fe;" text="Valider" />
          </children>
-      </VBox>
-      <HBox alignment="CENTER" layoutX="209.0" layoutY="445.0" prefHeight="60.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Button defaultButton="true" mnemonicParsing="false" onAction="#creerId" prefHeight="25.0" prefWidth="60.0" text="Valider" />
-         </children>
-      </HBox>
+      </AnchorPane>
    </children>
 </AnchorPane>

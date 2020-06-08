@@ -69,31 +69,8 @@ public class ControllerConnexion {
 	@FXML
 	private void creer_identifiant() {
 		Platform.runLater(() ->{
-			
-//			managerGui.showView(EnumView.NewIdentifiant);
 
-
-//			managerGui.showView(EnumView.ListeEquipeAttente);
-			
-		//	managerGui.showView(EnumView.AttributionMission);
-
-
-	//	managerGui.showView(EnumView.MissionListe);
-
-
-
-			//managerGui.showView(EnumView.ListeEquipeAttente);
-
-//			managerGui.showView(EnumView.ListeEquipeAttente);
-
-
-	//	managerGui.showView(EnumView.AttributionMission);
-
-
-
-//		managerGui.showView(EnumView.MissionListe);
-
-		managerGui.showView(EnumView.MissionListe);
+		managerGui.showView(EnumView.NewIdentifiant);
 
 		});
 	}

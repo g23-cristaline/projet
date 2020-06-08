@@ -35,12 +35,12 @@ public class ManagerGui extends ManagerGuiAbstract {
 	protected void configureStage()  {
 		
 		// Choisit la vue à afficher
-		showView( EnumView.MailDiffusion);
+		showView( EnumView.Connexion);
 		
 		// Configure le stage
-		stage.setTitle( "Gestion de contacts" );
+		stage.setTitle( "Bol d'air" );
 
-		stage.getIcons().add(new Image(getClass().getResource("icone.png").toExternalForm()));
+		stage.getIcons().add(new Image(getClass().getResource("0a-Logo_CKC.png").toExternalForm()));
 		
 		// Configuration par défaut pour les boîtes de dialogue
 		typeConfigDialogDefault = ConfigDialog.class;

@@ -108,7 +108,7 @@ public class DaoRole {
 		String				sql;
 		try {
 			cn=dataSource.getConnection();
-			sql="SELECT * FROM role inner join utilisateur on role.id=utilisateur.id inner join responsable on utilisateur.id_responsable=responsable.id where role ilike ?";
+			sql="SELECT * FROM role inner join utilisateur on role.id=utilisateur.id inner join responsable on utilisateur.id_responsable=responsable.id_responsable where role ilike ?";
 			stmt = cn.prepareStatement(sql);
 			stmt.setObject(1, role);
 			rs=stmt.executeQuery();

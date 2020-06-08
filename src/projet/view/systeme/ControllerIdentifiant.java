@@ -2,6 +2,9 @@ package projet.view.systeme;
 
 import javax.inject.Inject;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -23,15 +26,15 @@ public class ControllerIdentifiant {
 	@Inject DaoResponsable daoResponsable;
 	
 	@FXML
-	private TextField code;
+	private JFXTextField code;
 	@FXML
-	private TextField login;
+	private JFXTextField login;
 	@FXML
-	private TextField pass;
+	private JFXPasswordField pass;
 	@FXML
-	private TextField mail;
+	private JFXTextField mail;
 	@FXML
-	private TextField confirmation;
+	private JFXPasswordField confirmation;
 	Utilisateur user=new Utilisateur();
 	private Alert bteDialog;
 	

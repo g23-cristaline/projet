@@ -50,8 +50,8 @@ public class ModelConnexion {
 	
 	@PostConstruct
 	public void init() {
-		courant.setPseudo( "geek" );
-		courant.setPass( "geek" );
+		courant.setPseudo( "Zachery" );
+		courant.setPass( "QAG84IGG4AY" );
 	}
 	
 	

@@ -105,7 +105,7 @@ public class DaoResponsable {
 					+ "telephone=?,"
 					+ "info_supplementaires=?,"
 					+ "date_naissance=?"
-					+ " WHERE id =  ?";
+					+ " WHERE id_responsable =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, responsable.getCategorie().getId() );
 			stmt.setObject( 2, responsable.getNom_complet() );
@@ -137,7 +137,7 @@ public class DaoResponsable {
 			cn = dataSource.getConnection();
 
 			// Supprime le responsable
-			sql = "DELETE FROM responsable WHERE id = ? ";
+			sql = "DELETE FROM responsable WHERE id_responsable = ? ";
 			stmt = cn.prepareStatement(sql);
 			stmt.setObject( 1, idResponsable );
 			stmt.executeUpdate();
@@ -160,7 +160,7 @@ public class DaoResponsable {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM responsable WHERE id = ?";
+			sql = "SELECT * FROM responsable WHERE id_responsable = ?";
             stmt = cn.prepareStatement(sql);
             stmt.setObject( 1, idResponsable);
             rs = stmt.executeQuery();
@@ -235,7 +235,7 @@ public class DaoResponsable {
 	public Responsable construireResponsable( ResultSet rs) throws SQLException {
 
 		Responsable responsable = new Responsable();
-		responsable.setId(rs.getObject( "id", Integer.class ));
+		responsable.setId(rs.getObject( "id_responsable", Integer.class ));
 		responsable.setNom_complet(rs.getObject( "nom_complet", String.class ));
 		responsable.setAdresse(rs.getObject( "adresse", String.class ));
 		responsable.setPermis_conduire(rs.getObject("permis_conduire",Boolean.class));

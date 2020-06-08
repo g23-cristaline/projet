@@ -37,17 +37,15 @@ public class DaoParticipant {
 			cn = dataSource.getConnection();
 
 			// Insère le participant
-			sql = "INSERT INTO participant ( id, nom_complet, adresse, mail, telephone, date_naissance, id_equipe ) VALUES ( ?, ?, ?, ?, ?, ? ,?)";
+			sql = "INSERT INTO participant (nom_complet, adresse, mail, telephone, date_naissance, id_equipe ) VALUES ( ?, ?, ?, ?, ? ,?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
-			stmt.setInt(	1, participant.getId() );
-			stmt.setString(	2, participant.getNom_complet() );
-			stmt.setString(	3, participant.getAdresse() );
-			stmt.setString(	4, participant.getMail() );
-			stmt.setString(	5, participant.getTelephone() );
-			stmt.setObject(	6, participant.getDate_naissance() );
-			stmt.setObject(	7, participant.getEquipe().getId() );
-			
-			
+			stmt.setString(	1, participant.getNom_complet() );
+			stmt.setString(	2, participant.getAdresse() );
+			stmt.setString(	3, participant.getMail() );
+			stmt.setString(	4, participant.getTelephone() );
+			stmt.setObject(	5, participant.getDate_naissance() );
+			stmt.setObject(	6, participant.getEquipe().getId() );
+				
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD

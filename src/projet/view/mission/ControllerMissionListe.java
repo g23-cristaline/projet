@@ -41,7 +41,6 @@ public class ControllerMissionListe {
 	private ModelMission		modelMission;
 	private Mission courant;
 	
-	private détail		detail;
 
 	//Initialize
 	
@@ -106,8 +105,7 @@ public class ControllerMissionListe {
 					if ( listvieww.getSelectionModel().getSelectedIndex() == -1 ) {
 						managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 					} else {
-						courant=(Mission) listvieww.getSelectionModel().getSelectedItem();
-						 modelMission.setCourant(courant);
+						modelMission.preparerModifier((Mission) listvieww.getSelectionModel().getSelectedItem());
 						managerGui.showView( EnumView.DétailMission);
 					}
 				}

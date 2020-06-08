@@ -7,19 +7,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import jfox.javafx.view.IManagerGui;
+import projet.data.Executer;
 import projet.data.Mission;
 import projet.data.Responsable;
 
-public class ListeMissionAttribuées {
+public class ListeMissionAttribuees {
 	
 	// Composants de la vue
 	
 	@FXML
-	private TableView           tableview;
+	private TableView<Executer>          tableview;
 	@FXML
-	private TableColumn<Mission,String>  missions;
+	private TableColumn<Executer,String>  missions;
 	@FXML
-	private TableColumn<Responsable,String>  responsable;
+	private TableColumn<Executer,String>  responsable;
 	@FXML
 	private Button				buttonModifier;
 	@FXML
@@ -38,8 +39,12 @@ public class ListeMissionAttribuées {
 	@FXML
 	public void initialize() {
 		modelMission.actualiserListe();
-		tableview.setItems(modelMission.getListe());
+		tableview.setItems(modelMission.getAtm());
+		missions.setCellValueFactory(arg -> arg.getValue().getMission().nom_missionProperty());
+		responsable.setCellValueFactory(arg -> arg.getValue().getResponsable().nom_completProperty());
+		System.out.println(modelMission.getAtm().get(0).getResponsable());
 	}
+	
 	
 
 }

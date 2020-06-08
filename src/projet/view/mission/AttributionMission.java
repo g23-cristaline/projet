@@ -101,9 +101,10 @@ public class AttributionMission {
 			
 			@FXML
 			private void doValider() {
+				Modelmission.Attribuer_Mission(miss, resp);
+//				managerGui.showView(EnumView.MissionAttribuees);
 				try {
-					Modelmission.Attribuer_Mission(miss, resp);
-					managerGui.showView(EnumView.MissionAttribuees);
+
 					Alert reuissi = new Alert(AlertType.INFORMATION);
 					reuissi.setTitle("Information");
 					reuissi.setHeaderText(null);

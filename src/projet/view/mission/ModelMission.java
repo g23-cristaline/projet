@@ -16,6 +16,7 @@ import projet.dao.DaoLocalisation;
 import projet.dao.DaoMission;
 import projet.dao.DaoResponsable;
 import projet.data.Compte;
+import projet.data.Executer;
 import projet.data.Localisation;
 import projet.data.Memo;
 import projet.data.Mission;
@@ -31,7 +32,7 @@ public class ModelMission {
 	private final ObservableList<String> type = FXCollections.observableArrayList("m1","m2");
 	private final ObservableList<Localisation> listlocal = FXCollections.observableArrayList();
 	private final ObservableList<Responsable> listResponsable = FXCollections.observableArrayList();
-	private final ObservableMap<Responsable,Mission> Atm = FXCollections.observableHashMap();
+	private final ObservableList<Executer> Atm = FXCollections.observableArrayList();
 	
 	
 	
@@ -71,19 +72,20 @@ public class ModelMission {
 	public ObservableList<Responsable> getListResponsable(){
 		return listResponsable;
 	}
-	public ObservableMap<Responsable,Mission> getAtm(){
-	return Atm;
-	}
+	
 	
 	// Actualisations
 	
 	
 
+	public ObservableList<Executer> getAtm() {
+		return Atm;
+	}
 	public void actualiserListe() {
 		liste.setAll( daoMission.listerTout() );
 		listlocal.setAll(daoLocalisation.listerTout());
 		listResponsable.setAll(daoResponsable.listerTout());
-		Atm.putAll(daoMission.MissionsAttribuees());
+		Atm.setAll(daoMission.MissionsAttribuees());
  	}
 	
 	
@@ -143,7 +145,7 @@ public class ModelMission {
 			mapper.update( courant, UtilFX.findNext( liste, item ) );
 		}
 	
-		public void Attribuer_Mission(Mission m ,Responsable p) throws SQLException{
+		public void Attribuer_Mission(Mission m ,Responsable p) {
 			daoMission.AttribuerMission(m, p);
 		}
 		

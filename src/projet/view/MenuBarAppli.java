@@ -50,13 +50,8 @@ public class MenuBarAppli extends MenuBar {
 		
 		// Manu Système
 		
-		menu =  new Menu( "Système" );;
+		menu =  new Menu( "Système" );
 		this.getMenus().add(menu);
-		
-		item = new MenuItem( "Se déconnecter" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.Connexion )  );
-		menu.getItems().add( item );
-		itemDeconnecter = item;
 		
 		item = new MenuItem( "Quitter" );
 		item.setOnAction(  (e) -> managerGui.exit()  );
@@ -65,64 +60,52 @@ public class MenuBarAppli extends MenuBar {
 		
 		// Manu Données
 		
-		menu =  new Menu( "Données" );;
+		menu =  new Menu( "Participant" );
 		this.getMenus().add(menu);
 		menuDonnees = menu;
 		
-		item = new MenuItem( "Mémos" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.MemoListe )  );
+		item = new MenuItem( "Liste des participants" );
+		item.setOnAction(  (e) -> managerGui.showView( EnumView.ListeParticipant )  );
 		menu.getItems().add( item );
 		
-		item = new MenuItem( "Services" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.ServiceListe )  );
+		item = new MenuItem( "Participant en attente" );
+		item.setOnAction(  (e) -> managerGui.showView( EnumView.ListeEquipeAttente )  );
 		menu.getItems().add( item );
-		
-		item = new MenuItem( "Personnes" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.PersonneListe )  );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "Catégories" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.CategorieListe )  );
-		menu.getItems().add( item );
-		itemCategories = item;
-		
-		item = new MenuItem( "Utilisateurs" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.CompteListe )  );
-		menu.getItems().add( item );
-		itemUtilisateurs = item;
-
 		
 		// Manu Etats
 		
-		menu =  new Menu( "Etats" );;
+		menu =  new Menu( "Responsable" );;
 		this.getMenus().add(menu);
 		menuEtats = menu;
-		
-		item = new MenuItem( "Personnes par catégorie v1" );
-		item.setOnAction(  (e) ->  
-				managerGui.showDialog( EnumView.EtatPersonnesParCateogire1 ) );
+		item = new MenuItem( "Responsable" );
+		item.setOnAction(  (e) -> managerGui.showView( EnumView.ResponsableList )  );
 		menu.getItems().add( item );
 		
-		item = new MenuItem( "Personnes par catégorie v2" );
-		item.setOnAction(  (e) ->  
-				managerGui.showDialog( EnumView.EtatPersonnesParCateogire2 ) );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "Liste des personnes (PDF)" );
-		item.setOnAction(  (e) ->  
-				managerReport.openFilePdf( EnumReport.PersonnesListeSimple, null ) );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "Liste des personnes (viewer)" );
-		item.setOnAction(  (e) ->  
-				managerReport.showViewer( EnumReport.PersonnesListeSimple, null ) );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "Annuaire téléphonique" );
-		item.setOnAction(  (e) ->  
-//				managerReport.print( EnumReport.AnnuaireTelephone, null ) );
-				managerReport.showViewer( EnumReport.AnnuaireTelephone, null ) );
-		menu.getItems().add( item );
+//		item = new MenuItem( "Personnes par catégorie v1" );
+//		item.setOnAction(  (e) ->  
+//				managerGui.showDialog( EnumView.EtatPersonnesParCateogire1 ) );
+//		menu.getItems().add( item );
+//		
+//		item = new MenuItem( "Personnes par catégorie v2" );
+//		item.setOnAction(  (e) ->  
+//				managerGui.showDialog( EnumView.EtatPersonnesParCateogire2 ) );
+//		menu.getItems().add( item );
+//		
+//		item = new MenuItem( "Liste des personnes (PDF)" );
+//		item.setOnAction(  (e) ->  
+//				managerReport.openFilePdf( EnumReport.PersonnesListeSimple, null ) );
+//		menu.getItems().add( item );
+//		
+//		item = new MenuItem( "Liste des personnes (viewer)" );
+//		item.setOnAction(  (e) ->  
+//				managerReport.showViewer( EnumReport.PersonnesListeSimple, null ) );
+//		menu.getItems().add( item );
+//		
+//		item = new MenuItem( "Annuaire téléphonique" );
+//		item.setOnAction(  (e) ->  
+////				managerReport.print( EnumReport.AnnuaireTelephone, null ) );
+//				managerReport.showViewer( EnumReport.AnnuaireTelephone, null ) );
+//		menu.getItems().add( item );
 
 		
 		// Manu Tests
@@ -145,11 +128,11 @@ public class MenuBarAppli extends MenuBar {
 
 
 		// Configuration initiale du menu
-		configurerMenu( modelConnexion.getUtilisateurActif() );
+//		configurerMenu( modelConnexion.getUtilisateurActif() );
 
 		// Le changement du utilisateur connecté modifie automatiquement le menu
 		modelConnexion.utilisateurActifProperty().addListener( (obs) -> {
-					Platform.runLater( () -> configurerMenu( modelConnexion.getUtilisateurActif() ) );
+//					Platform.runLater( () -> configurerMenu( modelConnexion.getUtilisateurActif() ) );
 				}
 			); 
 		
@@ -160,7 +143,7 @@ public class MenuBarAppli extends MenuBar {
 	
 	private void configurerMenu( Utilisateur utilisateurActif  ) {
 
-		itemDeconnecter.setDisable(true);
+//		itemDeconnecter.setDisable(true);
 		
 		menuDonnees.setVisible(false);
 		itemCategories.setVisible(false);

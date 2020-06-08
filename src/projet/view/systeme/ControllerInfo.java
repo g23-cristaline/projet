@@ -11,10 +11,6 @@ public class ControllerInfo {
 	
 	// Composants de la vue
 	
-	@FXML
-	private Label		labelTitre;
-	@FXML
-	private Label		labelMessage;
 
 	
 	// Autres champs
@@ -29,8 +25,7 @@ public class ControllerInfo {
 	private void initialize() {
 		
 		// Data binding
-		labelTitre.textProperty().bind( modelInfo.titreProperty() );
-		labelMessage.textProperty().bind( modelInfo.messageProperty() );
+		
 		
 	}
 	

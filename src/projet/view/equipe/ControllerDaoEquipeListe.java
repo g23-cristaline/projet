@@ -13,6 +13,7 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.dao.DaoMemo;
 import projet.data.Equipe;
+import projet.data.Mission;
 import projet.data.Participant;
 import projet.view.EnumView;
 
@@ -32,6 +33,7 @@ public class ControllerDaoEquipeListe {
 	@FXML
 	public void initialize() {
 		modelequipe.actualiser();
+		courant=modelequipe.getEquipe();
 	 listeview.setItems(modelequipe.getListeequipe());
 	}
 	
@@ -42,15 +44,11 @@ public class ControllerDaoEquipeListe {
 				if(listeview.getSelectionModel().getSelectedIndex()==-1) {
 					 managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 				}
-				
-				
+							
 				 else {
+					
 					 try {
-						 courant=(Equipe) listeview.getSelectionModel().getSelectedItem();
-						 System.out.println(courant);
-						 modelequipe.setEquipe(courant);
-						 modelequipe.retrouver(courant);
-						managerGui.showView( EnumView.DetailEquipe );
+						 doModifier();
 					 }catch(Exception e) {
 						 managerGui.showDialogError("Aucun participant ou un seul;\n Une équipe doit avoir deux participants");
 					 }
@@ -60,13 +58,12 @@ public class ControllerDaoEquipeListe {
 				
 			}
 			
-		}
+		}	
 	
-	
-	
-	
-	
-	
+	}
+	public void doModifier() {
+		modelequipe.preparerModifier((Equipe) listeview.getSelectionModel().getSelectedItem());
+		managerGui.showView( EnumView.DetailEquipe );
 	}
 
 	public Equipe getCourant() {

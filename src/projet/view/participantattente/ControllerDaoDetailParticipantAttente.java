@@ -78,6 +78,8 @@ public class ControllerDaoDetailParticipantAttente {
 		managergui.showView( EnumView.ListeParticipant );
 	}
 	
+
+	
 	
 	
 	

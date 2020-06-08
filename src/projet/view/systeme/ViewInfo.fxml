@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="323.0" prefWidth="357.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.systeme.ControllerInfo">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.systeme.ControllerInfo">
    <children>
-      <Label fx:id="labelTitre" alignment="CENTER" styleClass="titre-vue" text="Titre" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
-      <VBox alignment="CENTER" layoutY="63.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
-         <children>
-            <Label fx:id="labelMessage" styleClass="message-accueil" text="Message" />
-         </children>
-      </VBox>
+      <ImageView fitHeight="47.0" fitWidth="104.0" layoutX="139.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images/0a-Logo_CKC.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="317.0" layoutY="111.0" text="Bol d'air">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="363.0" fitWidth="599.0" layoutX="59.0" layoutY="19.0" opacity="0.19" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images/boldairim.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="209.0" layoutY="215.0" prefHeight="26.0" prefWidth="246.0" text="Rendez-vous sur notre site web">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="204.0" layoutY="252.0" prefHeight="34.0" prefWidth="274.0" text="Pour avoir des informations sur notre association &#10;et les différents évènemlent que l'on organise " />
+      <JFXButton layoutX="209.0" layoutY="309.0" prefHeight="25.0" prefWidth="246.0" style="-fx-background-color: #77b5fe;" text="Site internet" />
+      <JFXButton layoutX="600.0" layoutY="7.0" style="-fx-background-color: #77b5fe;" text="Déconnexion" />
    </children>
 </AnchorPane>

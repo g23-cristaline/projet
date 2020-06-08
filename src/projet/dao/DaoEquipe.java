@@ -78,7 +78,7 @@ public class DaoEquipe {
 
 		try {
 			cn = dataSource.getConnection();
-			sql= "INSERT INTO equipe ( nom, categorie,nombre_repas, valide, paye) values(?,?,?,?,?)  ";
+			sql= "INSERT INTO equipe ( nom, categorie,nombre_repas, valide, paye) values(?,?,?,?,?) ";
 			stmt = cn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			stmt.setObject(	1, eq.getNom() );
 			stmt.setObject(2,eq.getCategorie());

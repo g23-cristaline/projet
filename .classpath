@@ -34,5 +34,6 @@
 	<classpathentry kind="lib" path="/~libraries/jasperreports-6.12/jfreechart-1.0.19.jar"/>
 	<classpathentry kind="lib" path="C:/tuto-jfox/demo-envoi-mail/lib/jakarta.activation.jar"/>
 	<classpathentry kind="lib" path="C:/tuto-jfox/demo-envoi-mail/lib/jakarta.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/Downloads/jfoenix-9.0.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

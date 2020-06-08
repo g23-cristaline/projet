@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -28,7 +30,7 @@
                         <Insets left="50.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="nom" editable="false">
+                  <TextField fx:id="nom" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -38,7 +40,7 @@
                         <Insets left="50.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="adresse" editable="false">
+                  <TextField fx:id="adresse" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -48,7 +50,7 @@
                         <Insets left="50.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="naissance" editable="false">
+                  <TextField fx:id="naissance" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -58,7 +60,7 @@
                         <Insets left="50.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="id" editable="false" prefHeight="26.0" prefWidth="279.0">
+                  <TextField fx:id="id" editable="false" focusTraversable="false" prefHeight="26.0" prefWidth="279.0">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -68,7 +70,7 @@
                         <Insets left="40.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="id_equipe" editable="false">
+                  <TextField fx:id="id_equipe" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -78,7 +80,7 @@
                         <Insets left="40.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="telephone" editable="false">
+                  <TextField fx:id="telephone" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -88,20 +90,25 @@
                         <Insets left="50.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="mail" editable="false">
+                  <TextField fx:id="mail" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
                   </TextField>
                </children>
             </VBox>
-            <Hyperlink text="Pièce d'identité" />
-            <Hyperlink text="Certificat médical" />
-            <Button alignment="BASELINE_RIGHT" mnemonicParsing="false" onAction="#doSupprimer" text="Supprimer">
-               <VBox.margin>
-                  <Insets left="200.0" />
-               </VBox.margin>
-            </Button>
+            <Hyperlink focusTraversable="false" onAction="#piece_identite" text="Pièce d'identité" />
+            <Hyperlink focusTraversable="false" onAction="#certificat_medical" text="Certificat médical" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <FlowPane alignment="CENTER" hgap="100.0" prefHeight="41.0" prefWidth="301.0">
+                     <children>
+                        <Hyperlink focusTraversable="false" onAction="#retour" text="Retour à la liste" />
+                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#doSupprimer" text="Supprimer" />
+                     </children>
+                  </FlowPane>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </left>
@@ -116,7 +123,7 @@
                         <Insets left="50.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="nom2" editable="false">
+                  <TextField fx:id="nom2" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -126,7 +133,7 @@
                         <Insets left="50.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="adresse2" editable="false">
+                  <TextField fx:id="adresse2" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -136,7 +143,7 @@
                         <Insets left="50.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="naissance2" editable="false">
+                  <TextField fx:id="naissance2" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -146,7 +153,7 @@
                         <Insets left="50.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="id2" editable="false">
+                  <TextField fx:id="id2" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -156,7 +163,7 @@
                         <Insets left="40.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="id_equipe2" editable="false">
+                  <TextField fx:id="id_equipe2" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -166,7 +173,7 @@
                         <Insets left="40.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="telephone2" editable="false">
+                  <TextField fx:id="telephone2" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -176,18 +183,18 @@
                         <Insets left="50.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="mail2" editable="false">
+                  <TextField fx:id="mail2" editable="false" focusTraversable="false">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
                   </TextField>
                </children>
             </VBox>
-            <Hyperlink text="Pièce d'identité" />
-            <Hyperlink text="Certificat médical" />
+            <Hyperlink focusTraversable="false" onAction="#piece_identite1" text="Pièce d'identité" />
+            <Hyperlink focusTraversable="false" onAction="#certificat_medical1" text="Certificat médical" />
             <Button mnemonicParsing="false" onAction="#doValider" text="Valider">
                <VBox.margin>
-                  <Insets right="200.0" />
+                  <Insets right="200.0" top="8.0" />
                </VBox.margin>
             </Button>
          </children>

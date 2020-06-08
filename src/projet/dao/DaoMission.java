@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
+import projet.data.Executer;
 import projet.data.Mission;
 import projet.data.Responsable;
 
@@ -152,7 +153,7 @@ public class DaoMission {
 			try {
 				cn = dataSource.getConnection();
 				
-				sql = "INSERT INTO executer(id,id_Mission,type) VALUES (?,?,?)";
+				sql = "INSERT INTO executer(id_responsable,id_Mission,type) VALUES (?,?,?)";
 				stmt = cn.prepareStatement( sql );
 				//stmt.setInt(1, mission.getId() );
 				stmt.setInt(1, p.getId());
@@ -170,7 +171,7 @@ public class DaoMission {
 			
 		}
 		
-		public HashMap<Responsable,Mission> MissionsAttribuees() {
+		public List<Executer> MissionsAttribuees() {
 			
 
 			Connection			cn		= null;
@@ -181,15 +182,20 @@ public class DaoMission {
 			try {
 				cn = dataSource.getConnection();
 				
-				sql = "SELECT * FROM executer ORDER BY id_Mission";
+				sql = "SELECT * FROM executer inner join responsable "
+						+ "on responsable.id_responsable=Executer.id_responsable inner "
+						+ "join mission on mission.id=executer.id_mission ORDER BY mission.id ";
 				stmt = cn.prepareStatement(sql);
 				rs = stmt.executeQuery();
 				
-				HashMap<Responsable,Mission> MissionsAttribuees  = new HashMap<Responsable,Mission>();
+				ArrayList<Executer>missionExecute=new ArrayList<Executer>();
 				while(rs.next()) {
-					 MissionsAttribuees.put(daoresponsable.construireResponsable(rs), construireMission(rs));
+					Executer exec=new Executer();
+					 exec.setMission(construireMission(rs));
+					 exec.setResponsable(daoresponsable.construireResponsable(rs));
+					 missionExecute.add(exec);
 				}
-				return MissionsAttribuees;
+				return missionExecute;
 			} catch(SQLException e) {
 				throw new RuntimeException(e);
 			} finally {
